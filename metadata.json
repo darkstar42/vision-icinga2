@@ -1,9 +1,10 @@
 {
-	"name": "PROFILE_NAME",
-	"version": "0.1.0",
-	"author": "nce",
-	"data_provider": "hiera",
-	"source": "",
-	"license": "",
-	"dependencies": []
+  "name": "PROFILE_NAME",
+  "version": "0.1.0",
+  "author": "",
+  "data_provider": "hiera",
+  "source": "",
+  "summary": "",
+  "license": "Apache-2.0",
+  "dependencies": []
 }
