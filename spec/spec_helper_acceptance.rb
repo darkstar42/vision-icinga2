@@ -13,7 +13,6 @@ install_puppet_agent_on hosts, {}
 RSpec.configure do |c|
   # Project root
   module_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
-#  module_name = module_root.split('-').last
   module_name = module_root.split('/').last.sub('-','_')
 
   # Readable test descriptions
@@ -34,7 +33,9 @@ RSpec.configure do |c|
         on host, 'cd /etc/puppetlabs/code/environments/production/modules/' + moduleName + ' && git checkout ' + moduleInfo['ref']
       end
     end
+
   end
+
 end
 
 
