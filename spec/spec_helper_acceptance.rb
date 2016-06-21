@@ -1,5 +1,4 @@
 require 'beaker-rspec'
-require 'pry'
 require 'yaml'
 
 install_puppet_agent_on hosts, {}
