@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'PROFILE_NAME' do
+describe 'vision_skeleton' do
 
   let(:facts) {{
                  :osfamily => 'Debian',

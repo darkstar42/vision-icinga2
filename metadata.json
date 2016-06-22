@@ -1,7 +1,7 @@
 {
-  "name": "PROFILE_NAME",
+  "name": "vision_skeleton",
   "version": "0.1.0",
-  "author": "",
+  "author": "vision-it",
   "data_provider": "hiera",
   "source": "",
   "summary": "",

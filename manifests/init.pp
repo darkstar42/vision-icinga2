@@ -1,4 +1,4 @@
-# Class: PROFILE_NAME
+# Class: vision_skeleton
 # ===========================
 #
 # Parameters
@@ -8,9 +8,9 @@
 # --------
 #
 # @example
-# contain PROFILE_NAME
+# contain ::vision_skeleton
 #
 
-class PROFILE_NAME {
+class vision_skeleton {
 
 }

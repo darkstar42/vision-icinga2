@@ -1,6 +1,6 @@
 HOSTS:
   debian-8-x64:
-    docker_container_name: PROFILE_NAME
+    docker_container_name: vision_skeleton
     default_apply_opts:
       order: random
       strict_variables:
