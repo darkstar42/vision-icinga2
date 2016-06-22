@@ -10,7 +10,7 @@ After cloning the repository the testing environment should be set up on the
 local machine:
 
 ```
-$ bundle install --path vendor
+$ bundle install --path vendor/bundle
 $ bundle exec rake
 ```
 
@@ -21,3 +21,4 @@ includes:
   * code-style enforcement (with `puppet-lint`)
   * unit-tests (with `rspec-puppet`)
   * acceptance-tests (with `beaker-rspec`)
+
