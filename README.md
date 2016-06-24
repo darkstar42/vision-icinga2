@@ -1,4 +1,4 @@
-# vision_skeleton
+# vision-skeleton
 
 [![Build Status](https://travis-ci.org/vision-it/vision-skeleton.svg?branch=production)](https://travis-ci.org/vision-it/vision-skeleton)
 
@@ -16,6 +16,6 @@ mod vision_skeleton:
 Include in a role/profile:
 
 ```puppet
-    contain ::vision_skeleton
+contain ::vision_skeleton
 ```
 
