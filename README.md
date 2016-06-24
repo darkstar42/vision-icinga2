@@ -1,6 +1,6 @@
 # vision_skeleton
 
-[![Build Status](https://travis-ci.org/vision-it/vision_skeleton.svg?branch=production)](https://travis-ci.org/vision-it/vision_skeleton)
+[![Build Status](https://travis-ci.org/vision-it/vision_skeleton.svg?branch=production)](https://travis-ci.org/vision-it/vision-skeleton)
 
 
 ## Usage
@@ -9,7 +9,7 @@ Include in the *Puppetfile*:
 
 ```
 mod vision_skeleton:
-    :git => 'https://github.com/vision-it/vision_skeleton.git,
+    :git => 'https://github.com/vision-it/vision-skeleton.git,
     :ref => 'production'
 ```
 
