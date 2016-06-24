@@ -11,6 +11,8 @@
 # contain ::vision_skeleton
 #
 
-class vision_skeleton {
+class vision_skeleton (
+
+) {
 
 }
