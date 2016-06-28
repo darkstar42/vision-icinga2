@@ -9,4 +9,4 @@ gem 'rake',                     :require => false
 # beaker related gems
 gem 'beaker-rspec',             :require => false
 gem 'serverspec',               :require => false
-gem 'specinfra', '2.59.0',      :require => false
+gem 'specinfra',                :require => false
