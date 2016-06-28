@@ -13,7 +13,7 @@ matrix:
           sudo: required
           script: bundle exec rake beaker
         - rvm: 2.1
-          env: PUPPET_VERSION="4.5" STRICT_VARIABLES="yes"
+          env: PUPPET_VERSION="4.5" STRICT_VARIABLES="no"
           services: docker
           sudo: required
           script: bundle exec rake
