@@ -22,3 +22,10 @@ includes:
   * unit-tests (with `rspec-puppet`)
   * acceptance-tests (with `beaker-rspec`)
 
+## Coding Standards
+
+* All variables are defined in the base manifest (init.pp)
+* Two spaces indent
+* No more than 140 characters per line
+* Every module uses a data/common.yaml for default values
+* There should be default values for **non** security relevant variables
