@@ -32,8 +32,8 @@ class vision_icinga2::client (
     }
   }
 
-
-  @@::icinga2::object::zone { $::fqdn:
+  @@::icinga2::object::zone { "${::fqdn} export":
+    name      => $::fqdn,
     parent    => $parent_zone,
     endpoints => {
       $::fqdn => {}
