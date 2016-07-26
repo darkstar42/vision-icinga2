@@ -35,7 +35,7 @@ class vision_icinga2::client (
   $child_nodes = query_resources(false,
     ['and',
       ['=', 'type', 'Class'],
-      ['=', 'title', 'vision_icinga2::Client'],
+      ['=', 'title', 'Vision_icinga2::Client'],
       ['=', ['parameter', 'parent_zone'], $::fqdn]]);
 
 
