@@ -32,13 +32,23 @@ class vision_icinga2::client (
     }
   }
 
-  @@::icinga2::object::zone { "${::fqdn} export":
-    name      => $::fqdn,
-    parent    => $parent_zone,
-    endpoints => {
-      $::fqdn => {}
+  $child_nodes = query_resources(false,
+    ['and',
+      ['=', 'type', 'Class'],
+      ['=', 'title', 'vision_icinga2::Client'],
+      ['=', ['parameter', 'parent_zone'], $::fqdn]]);
+
+
+  each ($child_nodes) |$child_node| {
+    $child_params = $child_node['parameters']
+
+    ::icinga2::object::zone { $child_params['name']:
+      parent    => $::fqdn,
+      endpoints => {
+       $child_params['name'] => {
+         host => $child_params['name'],
+       }
+      },
     }
   }
-
-  ::Icinga2::Object::Zone <<| parent == $::fqdn |>>
 }
