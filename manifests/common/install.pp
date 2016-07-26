@@ -37,11 +37,6 @@ class vision_icinga2::common::install (
     require => ::Apt::Source['debmon']
   }
 
-  package { 'icinga2':
-    ensure  => present,
-    require => Exec['icinga2-apt-update']
-  }
-
   package { $plugin_packages:
     ensure  => present,
     require => Exec['icinga2-apt-update']
@@ -59,6 +54,6 @@ class vision_icinga2::common::install (
     purge_configs    => true,
     purge_confd      => true,
     default_features => false,
-    require          => Package['icinga2', $plugin_packages]
+    require          => [Exec['icinga2-apt-update'], Package[$plugin_packages]]
   }
 }
