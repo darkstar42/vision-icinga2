@@ -39,15 +39,11 @@ class vision_icinga2::client (
       ['=', ['parameter', 'parent_zone'], $::fqdn]]);
 
   each ($child_nodes) |$child_node| {
-    notify { "${child_node}": }
-
-    $child_params = $child_node['parameters']
-
-    ::icinga2::object::zone { $child_node['title']:
+    ::icinga2::object::zone { $child_node['certname']:
       parent    => $::fqdn,
       endpoints => {
-        $child_node['title'] => {
-          host => $child_node['title'],
+        $child_node['certname'] => {
+          host => $child_node['certname'],
         }
       },
     }
