@@ -17,6 +17,9 @@ class vision_icinga2::client (
   contain ::vision_icinga2::common::install
 
   contain ::vision_icinga2::common::features
+  contain ::vision_icinga2::common::object
+
+  contain ::vision_monitoring
 
   ::icinga2::object::zone { $::fqdn:
     parent    => $parent_zone,
