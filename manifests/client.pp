@@ -28,7 +28,7 @@ class vision_icinga2::client (
   ::icinga2::object::zone { $parent_zone:
     parent    => $parent_zone,
     endpoints => {
-      $::fqdn => {}
+      $parent_zone => {}
     }
   }
 }
