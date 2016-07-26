@@ -42,12 +42,12 @@ class vision_icinga2::client (
   each ($child_nodes) |$child_node| {
     $child_params = $child_node['parameters']
 
-    ::icinga2::object::zone { $child_params['title']:
+    ::icinga2::object::zone { $child_node['title']:
       parent    => $::fqdn,
       endpoints => {
-       $child_params['title'] => {
-         host => $child_params['title'],
-       }
+        $child_node['title'] => {
+          host => $child_node['title'],
+        }
       },
     }
   }
