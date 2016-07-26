@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'hiera'
 
-describe 'vision_skeleton' do
+describe 'vision_icinga2' do
   on_supported_os.each do |os, facts|
     context "on #{os}" do
       let(:facts) do

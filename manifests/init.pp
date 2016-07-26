@@ -1,4 +1,4 @@
-# Class: vision_skeleton
+# Class: vision_icinga2
 # ===========================
 #
 # Parameters
@@ -8,10 +8,10 @@
 # --------
 #
 # @example
-# contain ::vision_skeleton
+# contain ::vision_icinga2
 #
 
-class vision_skeleton (
+class vision_icinga2 (
 
 ) {
 

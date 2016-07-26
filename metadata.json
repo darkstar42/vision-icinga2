@@ -1,5 +1,5 @@
 {
-  "name": "vision_skeleton",
+  "name": "vision_icinga2",
   "version": "0.0.1",
   "author": "vision-it",
   "data_provider": "hiera",

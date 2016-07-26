@@ -1,11 +1,11 @@
 require 'spec_helper_acceptance'
 
-describe 'vision_skeleton' do
+describe 'vision_icinga2' do
 
   context 'with defaults' do
     it 'should idempotently run' do
       pp = <<-EOS
-        class { 'vision_skeleton': }
+        class { 'vision_icinga2': }
       EOS
 
       apply_manifest(pp, :catch_failures => true)

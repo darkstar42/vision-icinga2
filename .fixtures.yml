@@ -5,4 +5,4 @@ fixtures:
             ref: "4.12.0"
             repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
     symlinks:
-        vision_skeleton: '#{source_dir}'
+        vision_icinga2: '#{source_dir}'
