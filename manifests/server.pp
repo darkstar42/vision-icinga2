@@ -17,6 +17,8 @@ class vision_icinga2::server (
   contain ::vision_icinga2::common::install
 
   contain ::vision_icinga2::common::features
+  contain ::vision_icinga2::server::features
 
-  contain ::icinga2::feature::notification
+  contain ::vision_icinga2::common::object
+  contain ::vision_icinga2::server::object
 }

@@ -21,4 +21,6 @@ class vision_icinga2::common::object (
   contain ::vision_icinga2::common::object::servicegroup
   contain ::vision_icinga2::common::object::template
   contain ::vision_icinga2::common::object::timeperiod
+
+  contain ::vision_monitoring
 }
