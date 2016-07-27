@@ -5,6 +5,8 @@ class vision_icinga2::server::object::notificationcommand (
   String $slack_channel     = hiera('icinga2::slack::channel', 'alerts'),
   String $slack_bot_name    = hiera('icinga2::slack::bot_name', 'icinga2'),
 ) {
+  # TODO
+  /*
   ::icinga2::object::notificationcommand { 'sms-service-notification':
     command  => [ '/icinga2/scripts/sms-service-notification.sh' ],
     cmd_path => 'SysconfDir',
@@ -90,4 +92,5 @@ class vision_icinga2::server::object::notificationcommand (
       'SERVICEDISPLAYNAME'     => '"$service.display_name$"',
     },
   }
+  */
 }

@@ -14,6 +14,8 @@
 class vision_icinga2::server::object (
 
 ) {
+  contain ::vision_icinga2::common::object
+
   contain ::vision_icinga2::server::object::api
   contain ::vision_icinga2::server::object::endpoint
   contain ::vision_icinga2::server::object::host

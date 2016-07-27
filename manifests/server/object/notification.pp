@@ -2,6 +2,8 @@
 class vision_icinga2::server::object::notification (
   String $notification_group = hiera('icinga2::notification::group', 'vision-sysadmin'),
 ) {
+  # TODO
+  /*
   ::icinga2::object::apply_notification_to_service { 'mail-service':
     assign_where => 'true == true',
     command      => 'mail-service-notification',
@@ -19,4 +21,5 @@ class vision_icinga2::server::object::notification (
     types        => [ 'Problem', 'Acknowledgement', 'Recovery', 'Custom' ],
     period       => '24x7',
   }
+  */
 }

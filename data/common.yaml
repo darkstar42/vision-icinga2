@@ -1,3 +1,11 @@
 ---
-vision_icinga2::param: true
+vision_icinga2::server::mysql_database: icinga2
+vision_icinga2::server::mysql_user: icinga2
+vision_icinga2::server::mysql_host: localhost
+vision_icinga2::server::mysql_port: 3306
 
+vision_icinga2::server::graphite_enable: false
+vision_icinga2::server::graphite_host: localhost
+vision_icinga2::server::graphite_port: 2003
+
+vision_icinga2::server::api_user: icingaapi

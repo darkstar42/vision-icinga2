@@ -2,8 +2,8 @@
 class vision_icinga2::server::object::user (
   Hash $groups = hiera_hash('vision::groups', { }),
   Hash $users = hiera_hash('vision::users', { }),
-  String $notification_group = hiera('icinga2::notification::group', 'vision-sysadmin'),
-  String $notification_email = hiera('icinga2::notification::email', 'vision-it@iis.fraunhofer.de'),
+  String $notification_group = hiera('icinga2::notification::group', 'TODO'),
+  String $notification_email = hiera('icinga2::notification::email', 'TODO'),
 ) {
   ::icinga2::object::user { 'vision-it':
     templates    => ['generic-user'],
@@ -28,7 +28,7 @@ class vision_icinga2::server::object::user (
           # A user can have multiple emails, but we only want the notifications sent
           # to the private addresses
           $user['mail'].each |$email| {
-              if ! ('iis.fraunhofer.de' in $email) {
+              if ! ('TODO' in $email) {
                 ::icinga2::object::user { $member:
                   templates    => ['generic-user'],
                   display_name => $user['commonName'],

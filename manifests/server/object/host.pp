@@ -7,8 +7,10 @@
   # Default: $::fqdn
 
 class vision_icinga2::server::object::host (
-  $zone = hiera('icinga2::client::zone', $::fqdn),
+  String $zone = $::vision_icinga2::server::zone,
 ) {
+  # TODO
+  /*
   # lint:ignore:variable_scope
   $child_nodes = query_resources(false,
     ['and',
@@ -58,6 +60,6 @@ class vision_icinga2::server::object::host (
       }
     }
   }
-
   # lint:endignore
+  */
 }
