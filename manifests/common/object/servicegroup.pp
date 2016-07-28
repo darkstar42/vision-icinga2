@@ -17,7 +17,9 @@ class vision_icinga2::common::object::servicegroup {
   }
 
   ::icinga2::object::servicegroup { 'mysql':
-    target_dir   => $::target_dir,
+    # not sure why we would ref. the target dir here
+    #
+    # target_dir   => $::target_dir,
     assign_where => 'match("mysql_*", service.check_command)',
   }
 }
