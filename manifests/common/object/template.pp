@@ -6,7 +6,7 @@ class vision_icinga2::common::object::template {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => template('vision/icinga2/conf/templates.conf.erb'),
+    content => file('vision_icinga2/server/object/templates.conf'),
     notify  => Service['icinga2'],
   }
 }
