@@ -1,8 +1,23 @@
 ---
 fixtures:
-    repositories:
-        stdlib:
-            ref: "4.12.0"
-            repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
-    symlinks:
-        vision_icinga2: '#{source_dir}'
+  repositories:
+    apt:
+      ref: "2.2.2"
+      repo: "https://github.com/puppetlabs/puppetlabs-apt"
+    stdlib:
+      ref: "4.12.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
+    icinga2:
+      ref: "origin/develop"
+      repo: "https://github.com/Icinga/puppet-icinga2"
+    vision_monitoring:
+      ref: "origin/production"
+      repo: "https://github.com/vision-it/vision-monitoring"
+    puppetdbquery:
+      ref: "2.1.1"
+      repo: "https://github.com/dalen/puppet-puppetdbquery"
+    puppetdb:
+      ref: "5.1.2"
+      repo: "http://github.com/puppetlabs/puppetlabs-puppetdb"
+  symlinks:
+    vision_icinga2: '#{source_dir}'
