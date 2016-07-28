@@ -1,0 +1,2 @@
+---
+vision_icinga2::client::parent_zone: foo.bar.de
