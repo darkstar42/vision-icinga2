@@ -2,6 +2,11 @@
 
 [![Build Status](https://travis-ci.org/vision-it/vision-icinga2.svg?branch=production)](https://travis-ci.org/vision-it/vision-icinga2)
 
+## Parameters
+### Client
+##### String `vision_icinga2::client::parent_zone`
+Zonename of the parent, to which the client belongs
+
 
 ## Usage
 
@@ -16,6 +21,8 @@ mod vision_icinga2:
 Include in a role/profile:
 
 ```puppet
-contain ::vision_icinga2
+contain ::vision_icinga2::client
+
+contain ::vision_icinga2::server
 ```
 
