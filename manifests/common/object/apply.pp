@@ -78,7 +78,7 @@ class vision_icinga2::common::object::apply (
 
   ::icinga2::object::apply_service { 'smart_status':
     apply         => 'for (disk in host.vars.disks)',
-    check_command => 'check_smart_status',
+    check_command => 'smart_status',
     vars          => {
       disk => 'disk'
     },

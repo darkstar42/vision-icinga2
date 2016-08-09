@@ -70,7 +70,7 @@ class vision_icinga2::common::object::checkcommand (
 
   # monitor SMART status
   ::icinga2::object::checkcommand { 'smart_status':
-    command   => ['/check_smart_status'],
+    command   => ['/check_scsi_smart'],
     arguments => {
       '"-d"' => {
         value => '"$disk$"',
