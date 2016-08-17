@@ -32,11 +32,16 @@ class vision_icinga2::client (
     }
   }
 
-  $child_nodes = query_resources(false,
-    ['and',
-      ['=', 'type', 'Class'],
-      ['=', 'title', 'Vision_icinga2::Client'],
-      ['=', ['parameter', 'parent_zone'], $::fqdn]]);
+  # We can only use the query resource if a puppetdb is available.
+  # This is usually not the case during a bootstrap
+  $child_nodes = $::settings::storeconfigs ? {
+    true => query_resources(false,
+              ['and',
+                ['=', 'type', 'Class'],
+                ['=', 'title', 'Vision_icinga2::Client'],
+                ['=', ['parameter', 'parent_zone'], $::fqdn]]),
+    default => {}
+  }
 
   each ($child_nodes) |$child_node| {
     ::icinga2::object::zone { $child_node['certname']:

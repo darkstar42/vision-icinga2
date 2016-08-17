@@ -16,8 +16,17 @@ fixtures:
     puppetdbquery:
       ref: "2.1.1"
       repo: "https://github.com/dalen/puppet-puppetdbquery"
-    puppetdb:
-      ref: "5.1.2"
-      repo: "http://github.com/puppetlabs/puppetlabs-puppetdb"
+    vision_puppet:
+      ref: "origin/production"
+      repo: "https://github.com/vision-it/vision-puppet"
+    inifile:
+      ref: "1.5.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-inifile"
+    firewall:
+      ref: "1.8.1"
+      repo: "https://github.com/puppetlabs/puppetlabs-firewall"
+    postgresql:
+      ref: "4.8.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-postgresql"
   symlinks:
     vision_icinga2: '#{source_dir}'
