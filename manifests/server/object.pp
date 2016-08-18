@@ -12,9 +12,14 @@
 #
 
 class vision_icinga2::server::object (
-
+  String $api_user,
+  String $api_password,
 ) {
-  contain ::vision_icinga2::server::object::api
+
+  class { '::vision_icinga2::server::object::api':
+    api_user     => $api_user,
+    api_password => $api_password,
+  }
   contain ::vision_icinga2::server::object::endpoint
   contain ::vision_icinga2::server::object::host
   contain ::vision_icinga2::server::object::notification

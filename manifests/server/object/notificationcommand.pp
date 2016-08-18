@@ -1,9 +1,9 @@
 # notificationcommand profile
 class vision_icinga2::server::object::notificationcommand (
-  String $slack_icinga_host = hiera('icinga2::host', $::fqdn),
-  String $slack_webhook_url = hiera('icinga2::slack::webhook_url'),
-  String $slack_channel     = hiera('icinga2::slack::channel', 'alerts'),
-  String $slack_bot_name    = hiera('icinga2::slack::bot_name', 'icinga2'),
+  String $slack_icinga_host = $::fqdn,
+  String $slack_webhook_url,
+  String $slack_channel = 'alerts',
+  String $slack_bot_name = 'icinga2',
 ) {
   ::icinga2::object::notificationcommand { 'sms-service-notification':
     command  => [ '/icinga2/scripts/sms-service-notification.sh' ],
@@ -69,7 +69,7 @@ class vision_icinga2::server::object::notificationcommand (
 
   file { '/etc/icinga2/scripts/slack-service-notification.sh':
     mode    => '0755',
-    content => template('vision/icinga2/notifications/slack-service-notification.sh.erb'),
+    content => template('vision_icinga2/notifications/slack-service-notification.sh.erb'),
   }
 
   ::icinga2::object::notificationcommand { 'slack-service-notification':
