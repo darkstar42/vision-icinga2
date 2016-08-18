@@ -1,2 +1,5 @@
 ---
+vision_icinga2::server::api_user: "%{hiera('icinga2::api::username')}"
+vision_icinga2::server::api_password: "%{hiera('icinga2::api::password')}"
+vision_icinga2::server::object::notificationcommand::slack_webhook_url: "%{hiera('icinga2::slack::webhook_url')}"
 
