@@ -23,9 +23,9 @@ class vision_icinga2::common::install (
     'nagios-snmp-plugins',
     'nagios-plugins-contrib',
   ]
-  $mail_package = 'mailutils'
+  $mail_packages = ['mailutils']
 
-  package { union($plugin_packages, $mail_package):
+  package { union($plugin_packages, $mail_packages):
     ensure  => present,
   }
 
