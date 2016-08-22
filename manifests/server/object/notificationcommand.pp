@@ -1,7 +1,7 @@
 # notificationcommand profile
 class vision_icinga2::server::object::notificationcommand (
-  String $slack_icinga_host = $::fqdn,
   String $slack_webhook_url,
+  String $slack_icinga_host = $::fqdn,
   String $slack_channel = 'alerts',
   String $slack_bot_name = 'icinga2',
 ) {
