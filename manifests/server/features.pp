@@ -14,5 +14,6 @@
 class vision_icinga2::server::features (
 
 ) {
-  contain ::icinga2::feature::notification
+  # currently in dev mode; disable notifications --goschlui[29.08.2016]
+  #contain ::icinga2::feature::notification
 }
