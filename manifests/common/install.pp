@@ -36,6 +36,7 @@ class vision_icinga2::common::install (
 
   exec { 'icinga2-apt-update':
     command => '/usr/bin/apt-get update',
+    onlyif  => "/bin/bash -c 'exit $(( $(( $(date +%s) - $(stat -c %Y /var/lib/apt/lists/$( ls /var/lib/apt/lists/ -tr1|tail -1 )) )) <= 604800 ))'",
     require => ::Apt::Source['debmon']
   }
 
@@ -47,16 +48,6 @@ class vision_icinga2::common::install (
   package { $mail_package:
     ensure  => present,
     require => Exec['icinga2-apt-update']
-  }
-
-  class { '::icinga2':
-    db_type          => 'none',
-    use_debmon_repo  => false,
-    manage_repos     => false,
-    purge_configs    => true,
-    purge_confd      => true,
-    default_features => false,
-    require          => [Exec['icinga2-apt-update'], Package[$plugin_packages]]
   }
 
   user { ['icinga', 'nagios']:
