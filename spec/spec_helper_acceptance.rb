@@ -26,11 +26,15 @@ RSpec.configure do |c|
     modules = modules_fixtures['fixtures']['repositories']
 
     hosts.each do |host|
+      on host, 'bash ' + '/etc/puppetlabs/code/modules/vision_icinga2/files/testing/gencrt.sh'
+      puts 'Provisioned new set of dummy certificates'
+
       modules.each do |moduleName, moduleInfo|
         puts 'Fetch ' + moduleName + ' ' + moduleInfo['ref'] + ' from ' + moduleInfo['repo']
         on host, 'git clone ' + moduleInfo['repo'] + ' /etc/puppetlabs/code/environments/production/modules/' + moduleName
         on host, 'cd /etc/puppetlabs/code/environments/production/modules/' + moduleName + ' && git checkout ' + moduleInfo['ref']
       end
+
     end
 
   end
