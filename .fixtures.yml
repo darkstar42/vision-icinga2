@@ -22,5 +22,11 @@ fixtures:
     vision_groups:
       ref: "origin/production"
       repo: "https://github.com/vision-it/vision-groups"
+    vision_mysql:
+      ref: "origin/production"
+      repo: "https://github.com/vision-it/vision-mysql"
+    mysql:
+      ref: "3.8.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-mysql"
   symlinks:
     vision_icinga2: '#{source_dir}'
