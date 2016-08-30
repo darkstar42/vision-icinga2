@@ -4,6 +4,8 @@ class vision_icinga2::server::object::endpoint (
   $zone = hiera('icinga2::zone', $::fqdn),
 ) {
 
+
+
   # $child_nodes = query_resources(false,
   #   ['and',
   #     ['=', 'type', 'Class'],

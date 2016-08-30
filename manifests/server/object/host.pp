@@ -10,11 +10,14 @@ class vision_icinga2::server::object::host (
   $zone = hiera('icinga2::client::zone', $::fqdn),
 ) {
   # lint:ignore:variable_scope
-  $child_nodes = query_resources(false,
-    ['and',
-      ['=', 'type', 'Class'],
-      ['=', 'title', 'vision_icinga2::Base::Monitoring'],
-      ['=', ['parameter', 'parent_zone'], $zone]]);
+  $child_nodes = $::settings::storeconfigs ? {
+    true => query_resources(false,
+              ['and',
+                ['=', 'type', 'Class'],
+                ['=', 'title', 'vision_icinga2::Base::Monitoring'],
+                ['=', ['parameter', 'parent_zone'], $zone]]),
+    default => {}
+  }
 
   each ($child_nodes) |$child_node| {
     $child_params = $child_node['parameters']

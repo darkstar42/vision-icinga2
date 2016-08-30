@@ -15,17 +15,23 @@ class vision_icinga2::server::object::zone (
   $parent_zone = hiera('icinga2::client::parent_zone', undef),
 ) {
 
-  $parent_nodes = query_resources(false,
-    ['and',
-      ['=', 'type', 'Class'],
-      ['=', 'title', 'vision_icinga2::Base::Monitoring'],
-      ['=', ['parameter', 'zone'], $parent_zone]]);
+  $parent_nodes = $::settings::storeconfigs ? {
+    true => query_resources(false,
+              ['and',
+                ['=', 'type', 'Class'],
+                ['=', 'title', 'vision_icinga2::Base::Monitoring'],
+                ['=', ['parameter', 'zone'], $parent_zone]]),
+    default => {}
+  }
 
-  $child_nodes = query_resources(false,
-    ['and',
-      ['=', 'type', 'Class'],
-      ['=', 'title', 'vision_icinga2::Base::Monitoring'],
-      ['=', ['parameter', 'parent_zone'], $zone]]);
+  $child_nodes = $::settings::storeconfigs ? {
+    true => query_resources(false,
+              ['and',
+                ['=', 'type', 'Class'],
+                ['=', 'title', 'vision_icinga2::Base::Monitoring'],
+                ['=', ['parameter', 'parent_zone'], $zone]]),
+    default => {}
+  }
 
   if is_string($parent_zone) {
     ::icinga2::object::zone { $zone:
