@@ -15,6 +15,7 @@ class vision_icinga2::client (
   String $parent_zone
 ) {
   contain ::vision_icinga2::common::install
+  contain ::vision_icinga2::client::install
 
   contain ::vision_icinga2::common::features
   contain ::vision_icinga2::common::object
