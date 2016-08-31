@@ -21,12 +21,13 @@ describe 'vision_icinga2_server' do
             target => '/tmp/dummyCA.pem',
        }->
        class { 'vision_icinga2::server':
-          api_password => 'icinga2',
-          api_user     => 'icinga2',
-          mysql_user   => 'icinga2',
-          mysql_password   => 'icinga2',
-          mysql_database   => 'icinga2',
-          mysql_root_password   => 'icinga2',
+          api_password                   => 'icinga2',
+          mysql_password                 => 'icinga2',
+          mysql_root_password            => 'icinga2',
+          notification_users             => {},
+          notification_groups            => {},
+          notification_email             => 'foo@bar.de',
+          notification_slack_webhook_url => 'barfoo.slack.com',
         }
       EOS
 
