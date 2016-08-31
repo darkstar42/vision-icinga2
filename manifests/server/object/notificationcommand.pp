@@ -1,9 +1,9 @@
 # notificationcommand profile
 class vision_icinga2::server::object::notificationcommand (
-  String $slack_icinga_host = $::fqdn,
-  String $slack_webhook_url,
-  String $slack_channel = 'alerts',
-  String $slack_bot_name = 'icinga2',
+  String $notification_slack_icinga_host = $::vision_icinga2::server::notification_slack_icinga_host,
+  String $notification_slack_webhook_url = $::vision_icinga2::server::notification_slack_webhook_url,
+  String $notification_slack_channel = $::vision_icinga2::server::notification_slack_channel,
+  String $notification_slack_bot_name = $::vision_icinga2::server::notification_slack_bot_name,
 ) {
   ::icinga2::object::notificationcommand { 'sms-service-notification':
     command  => [ '/icinga2/scripts/sms-service-notification.sh' ],

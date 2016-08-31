@@ -1,24 +1,22 @@
 # user class
 class vision_icinga2::server::object::user (
-  Hash $groups = hiera_hash('vision::groups', { }),
-  Hash $users = hiera_hash('vision::users', { }),
-  String $notification_group = hiera('icinga2::notification::group', 'vision-sysadmin'),
-  String $notification_email = hiera('icinga2::notification::email', 'vision-it@iis.fraunhofer.de'),
+  Hash $groups = $::vision_icinga2::server::notification_groups,
+  Hash $users  = $::vision_icinga2::server::notification_users,
 ) {
   ::icinga2::object::user { 'vision-it':
     templates    => ['generic-user'],
     display_name => 'Vision IT',
-    email        => $notification_email,
+    email        => $::vision_icinga2::server::notification_email,
     groups       => [
-      $notification_group
+      $::vision_icinga2::server::notification_group
     ],
   }
 
   $member = {}
 
   # Check if notification group exists
-  if has_key($groups, $notification_group) {
-    $group = $groups[$notification_group]
+  if has_key($groups, $::vision_icinga2::server::notification_group) {
+    $group = $groups[$::vision_icinga2::server::notification_group]
 
     # Then take all members of that group and check if they are defined
     $group['members'].each |$member| {
@@ -35,7 +33,7 @@ class vision_icinga2::server::object::user (
                   pager        => $user['mobile'],
                   email        => $email,
                   groups       => [
-                    $notification_group
+                    $::vision_icinga2::server::notification_group
                   ],
                 }
               }

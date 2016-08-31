@@ -11,15 +11,15 @@
   # Default: undef
 
 class vision_icinga2::server::object::zone (
-  $zone = hiera('icinga2::client::zone', $::fqdn),
-  $parent_zone = hiera('icinga2::client::parent_zone', undef),
+  String $zone = $::vision_icinga2::server::client_zone,
+  $parent_zone = $::vision_icinga2::server::parent_zone,
 ) {
 
   $parent_nodes = $::settings::storeconfigs ? {
     true => query_resources(false,
               ['and',
                 ['=', 'type', 'Class'],
-                ['=', 'title', 'vision_icinga2::Base::Monitoring'],
+                ['=', 'title', 'vision_icinga2::client'],
                 ['=', ['parameter', 'zone'], $parent_zone]]),
     default => {}
   }
@@ -28,7 +28,7 @@ class vision_icinga2::server::object::zone (
     true => query_resources(false,
               ['and',
                 ['=', 'type', 'Class'],
-                ['=', 'title', 'vision_icinga2::Base::Monitoring'],
+                ['=', 'title', 'vision_icinga2::client'],
                 ['=', ['parameter', 'parent_zone'], $zone]]),
     default => {}
   }

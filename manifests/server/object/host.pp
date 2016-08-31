@@ -1,21 +1,14 @@
 # = Class: vision_icinga2::server::object::host
-#
-# == Parameters:
-  #
-  # [*zone*]
-  #
-  # Default: $::fqdn
-
-class vision_icinga2::server::object::host (
-  $zone = hiera('icinga2::client::zone', $::fqdn),
-) {
+class vision_icinga2::server::object::host () {
   # lint:ignore:variable_scope
   $child_nodes = $::settings::storeconfigs ? {
+    # collect all nodes that have their parent zone configured to be
+    # in this servers client zone
     true => query_resources(false,
               ['and',
                 ['=', 'type', 'Class'],
-                ['=', 'title', 'vision_icinga2::Base::Monitoring'],
-                ['=', ['parameter', 'parent_zone'], $zone]]),
+                ['=', 'title', 'vision_icinga2::client'],
+                ['=', ['parameter', 'parent_zone'], $::vision_icinga2::server::client_zone]]),
     default => {}
   }
 
@@ -36,13 +29,13 @@ class vision_icinga2::server::object::host (
 
       # get the endpoint on which remote checks should be executed
       # this is usually the client's first parent
-      # dir01.prd.dmz -> visionx1/visionx2 -> vision07
+      # dir01 -> dom0 -> mon_primary
       # the query asks for all client parameters, which are search for its
       # parent_zone.
       $endpoint = query_resources(false,
         ['and',
           ['=', 'type', 'Class'],
-          ['=', 'title', 'vision_icinga2::Base::Monitoring'],
+          ['=', 'title', 'vision_icinga2::client'],
           ['=', 'certname', $host['title']]
         ]
       );
