@@ -1,9 +1,13 @@
 ---
 vision_icinga2::client::parent_zone: foo.bar.de
+vision_icinga2::server::client_zone: bar.foo.de
 vision_icinga2::server::api_user: icinga2
 vision_icinga2::server::api_password: icinga2
 vision_icinga2::server::mysql_user: icinga2
 vision_icinga2::server::mysql_password: icinga2
 vision_icinga2::server::mysql_database: icinga2
 vision_icinga2::server::mysql_root_password: icinga2
-vision_icinga2::server::object::notificationcommand::slack_webhook_url: 'foobar'
+vision_icinga2::server::notification_slack_webhook_url: 'foobar'
+vision_icinga2::server::notification_email: 'foobar@example.org'
+vision_icinga2::server::notification_users: {}
+vision_icinga2::server::notification_groups: {}

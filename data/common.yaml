@@ -1,5 +1,11 @@
 ---
-vision_icinga2::server::api_user: "%{hiera('icinga2::api::username')}"
+vision_icinga2::server::api_user: 'icinga2'
 vision_icinga2::server::api_password: "%{hiera('icinga2::api::password')}"
-vision_icinga2::server::object::notificationcommand::slack_webhook_url: "%{hiera('icinga2::slack::webhook_url')}"
+vision_icinga2::server::mysql_user: 'icinga2'
+vision_icinga2::server::mysql_database: 'icinga2'
+vision_icinga2::server::notification_group: 'vision-sysadmin'
+vision_icinga2::server::notification_email: "%{hiera('vision::mail')}"
+vision_icinga2::server::notification_slack_bot_name: 'icinga2'
+vision_icinga2::server::notification_slack_webhook_url: "%{hiera('icinga2::slack::webhook_url')}"
+vision_icinga2::server::notification_slack_channel: 'monitoring'
 
