@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-ICINGA_HOSTNAME="<%=@slack_icinga_host %>"
-SLACK_WEBHOOK_URL="<%=@slack_webhook_url %>"
-SLACK_CHANNEL="#<%=@slack_channel %>"
-SLACK_BOTNAME="<%=@slack_bot_name %>"
+ICINGA_HOSTNAME="<%=@notification_slack_icinga_host %>"
+SLACK_WEBHOOK_URL="<%=@notification_slack_webhook_url %>"
+SLACK_CHANNEL="#<%=@notification_slack_channel %>"
+SLACK_BOTNAME="<%=@notification_slack_bot_name %>"
 
 #Set the message icon based on ICINGA service state
 if [ "$SERVICESTATE" = "CRITICAL" ]

@@ -1,4 +1,4 @@
-mkdir -p /vision/pki/
+#!/usr/bin/env bash
 openssl genrsa -out /tmp/dummyCA.key 1024
 openssl req -x509 -new -nodes -key /tmp/dummyCA.key -sha256 -days 1 -out /tmp/dummyCA.pem -subj "/C=US/ST=CA/O=Acme, Inc./CN=example.com"
 
