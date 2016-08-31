@@ -28,11 +28,19 @@ describe 'vision_icinga2_server' do
           notification_groups            => {},
           notification_email             => 'foo@bar.de',
           notification_slack_webhook_url => 'barfoo.slack.com',
+          notification_slack_channel     => 'foobar',
         }
       EOS
 
       apply_manifest(pp, :catch_failures => true)
       apply_manifest(pp, :catch_changes => true)
+
+    end
+
+    context 'check provisioned files' do
+      describe file('/etc/icinga2/scripts/slack-service-notification.sh') do
+        it { should contain 'SLACK_CHANNEL="#foobar"' }
+      end
     end
 
   end
