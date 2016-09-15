@@ -4,7 +4,7 @@
 
 ## Parameters
 ### Client
-##### String `vision_icinga2::client::parent_zone`
+##### String `vision_icinga2::parent_zone`
 No default. Zonename of the parent, to which the client belongs
 
 ### Server
@@ -13,7 +13,7 @@ No default. Zonename of the parent, to which the client belongs
 ###### String `vision_icinga2::server::client_zone`
 Default: `fqdn`.
 
-###### String `vision_icinga2::server::parent_zone`
+###### String `vision_icinga2::parent_zone`
 No default. Use if the icinga master has another parent.
 
 ##### Database

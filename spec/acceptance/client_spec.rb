@@ -20,7 +20,7 @@ describe 'vision_icinga2_client' do
             ensure  => link,
             target => '/tmp/dummyCA.pem',
        }->
-       class { 'vision_icinga2::client':
+       class { 'vision_icinga2':
           parent_zone => 'foobar.de',
         }
       EOS

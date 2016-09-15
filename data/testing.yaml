@@ -1,6 +1,6 @@
 ---
-vision_icinga2::client::parent_zone: foo.bar.de
-vision_icinga2::server::client_zone: bar.foo.de
+vision_icinga2::parent_zone: foo.bar.de
+vision_icinga2::client_zone: bar.foo.de
 vision_icinga2::server::api_user: icinga2
 vision_icinga2::server::api_password: icinga2
 vision_icinga2::server::mysql_user: icinga2

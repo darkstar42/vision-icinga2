@@ -39,7 +39,7 @@ class vision_icinga2::client (
     true => query_resources(false,
               ['and',
                 ['=', 'type', 'Class'],
-                ['=', 'title', 'Vision_icinga2::Client'],
+                ['=', 'title', 'Vision_icinga2'],
                 ['=', ['parameter', 'parent_zone'], $::fqdn]]),
     default => {}
   }
