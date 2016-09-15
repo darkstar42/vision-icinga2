@@ -14,7 +14,6 @@
 class vision_icinga2::server::object () {
 
   contain ::vision_icinga2::server::object::api
-  contain ::vision_icinga2::server::object::host
   contain ::vision_icinga2::server::object::notification
   contain ::vision_icinga2::server::object::notificationcommand
   contain ::vision_icinga2::server::object::user

@@ -1,5 +1,5 @@
-# = Class: vision_icinga2::server::object::host
-class vision_icinga2::server::object::host () {
+# = Class: vision_icinga2::commong::object::host
+class vision_icinga2::commong::object::host () {
   # lint:ignore:variable_scope
   $child_nodes = $::settings::storeconfigs ? {
     # collect all nodes that have their parent zone configured to be
@@ -8,7 +8,7 @@ class vision_icinga2::server::object::host () {
               ['and',
                 ['=', 'type', 'Class'],
                 ['=', 'title', 'Vision_icinga2::Client'],
-                ['=', ['parameter', 'parent_zone'], $::vision_icinga2::server::client_zone]]),
+                ['=', ['parameter', 'parent_zone'], $::vision_icinga2::client_zone]]),
     default => {}
   }
 
