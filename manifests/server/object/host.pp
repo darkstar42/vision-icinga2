@@ -7,7 +7,7 @@ class vision_icinga2::server::object::host () {
     true => query_resources(false,
               ['and',
                 ['=', 'type', 'Class'],
-                ['=', 'title', 'vision_icinga2::client'],
+                ['=', 'title', 'Vision_icinga2::Client'],
                 ['=', ['parameter', 'parent_zone'], $::vision_icinga2::server::client_zone]]),
     default => {}
   }
@@ -35,7 +35,7 @@ class vision_icinga2::server::object::host () {
       $endpoint = query_resources(false,
         ['and',
           ['=', 'type', 'Class'],
-          ['=', 'title', 'vision_icinga2::client'],
+          ['=', 'title', 'Vision_icinga2::Client'],
           ['=', 'certname', $host['title']]
         ]
       );

@@ -23,4 +23,11 @@ class vision_icinga2::common::object (
   contain ::vision_icinga2::common::object::timeperiod
 
   contain ::vision_monitoring
+
+  ::icinga2::object::host { $::fqdn:
+    target_file_name => "${::fqdn}.conf",
+    display_name     => $::fqdn,
+    ipv4_address     => $::ipaddress_eth0,
+  }
+
 }
