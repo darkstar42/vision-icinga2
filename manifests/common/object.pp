@@ -28,11 +28,11 @@ class vision_icinga2::common::object {
     'os'            => $::kernel,
     'vm'            => $::is_virtual,
     'distro'        => $::operatingsystem,
-    'parent'        => $parent_zone,
+    'parent'        => $::vision_icinga2::parent_zone,
     'remote_client' => $::fqdn,
     'notification'  => {
-      'email' => $enable_email,
-      'sms'   => $enable_sms,
+      'email' => $::vision_icinga2::enable_email,
+      'sms'   => $::vision_icinga2::enable_sms,
     }
   }
   # Array of Hashes
