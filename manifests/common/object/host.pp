@@ -1,5 +1,5 @@
 # = Class: vision_icinga2::commong::object::host
-class vision_icinga2::commong::object::host () {
+class vision_icinga2::common::object::host () {
   # lint:ignore:variable_scope
   $child_nodes = $::settings::storeconfigs ? {
     # collect all nodes that have their parent zone configured to be
