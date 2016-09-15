@@ -56,10 +56,10 @@ class vision_icinga2::server::object::zone (
   each ($parent_nodes) |$parent_node| {
     $parent_params = $parent_node['parameters']
 
-    ::icinga2::object::zone { $parent_params['zone']:
+    ::icinga2::object::zone { $parent_params['client_zone']:
       endpoints => {
-        $parent_params['zone'] => {
-          host => $parent_params['zone'],
+        $parent_params['client_zone'] => {
+          host => $parent_params['client_zone'],
         }
       },
     }
@@ -68,11 +68,11 @@ class vision_icinga2::server::object::zone (
   each ($child_nodes) |$child_node| {
     $child_params = $child_node['parameters']
 
-    ::icinga2::object::zone { $child_params['zone']:
+    ::icinga2::object::zone { $child_params['client_zone']:
       parent    => $zone,
       endpoints => {
-        $child_params['zone'] => {
-          host => $child_params['zone'],
+        $child_params['client_zone'] => {
+          host => $child_params['client_zone'],
         }
       },
     }
