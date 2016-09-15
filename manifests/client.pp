@@ -11,9 +11,7 @@
 # contain ::vision_icinga2
 #
 
-class vision_icinga2::client (
-  String $parent_zone
-) {
+class vision_icinga2::client {
   contain ::vision_icinga2::common::install
   contain ::vision_icinga2::client::install
 
@@ -21,15 +19,15 @@ class vision_icinga2::client (
   contain ::vision_icinga2::common::object
 
   ::icinga2::object::zone { $::fqdn:
-    parent    => $parent_zone,
+    parent    => $::vision_icinga2::parent_zone,
     endpoints => {
       $::fqdn => {}
     }
   }
 
-  ::icinga2::object::zone { $parent_zone:
+  ::icinga2::object::zone { $::vision_icinga2::parent_zone:
     endpoints => {
-      $parent_zone => {}
+      $::vision_icinga2::parent_zone => {}
     }
   }
 

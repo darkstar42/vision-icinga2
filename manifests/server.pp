@@ -20,9 +20,6 @@ class vision_icinga2::server (
   String $mysql_database,
   String $mysql_root_password,
 
-  String $client_zone = $::fqdn,
-  $parent_zone = undef,
-
   String $notification_group,
   String $notification_email,
   String $notification_slack_icinga_host = $::fqdn,
