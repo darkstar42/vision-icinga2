@@ -68,13 +68,15 @@ class vision_icinga2::server::object::zone (
   each ($child_nodes) |$child_node| {
     $child_params = $child_node['parameters']
 
-    ::icinga2::object::zone { $child_params['client_zone']:
-      parent    => $zone,
-      endpoints => {
-        $child_params['client_zone'] => {
-          host => $child_params['client_zone'],
-        }
-      },
+    if is_string($child_params['client_zone']) {
+      ::icinga2::object::zone { $child_params['client_zone']:
+        parent    => $zone,
+        endpoints => {
+          $child_params['client_zone'] => {
+            host => $child_params['client_zone'],
+          }
+        },
+      }
     }
   }
   # lint:endignore
