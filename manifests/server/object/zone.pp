@@ -20,7 +20,7 @@ class vision_icinga2::server::object::zone (
               ['and',
                 ['=', 'type', 'Class'],
                 ['=', 'title', 'Vision_icinga2'],
-                ['=', ['parameter', 'zone'], $parent_zone]]),
+                ['=', ['parameter', 'client_zone'], $parent_zone]]),
     default => {}
   }
 
