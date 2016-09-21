@@ -12,13 +12,17 @@
 #
 
 class vision_icinga2 (
-  String $type          = 'client',
-  String $client_zone   = $::fqdn,
-  Hash $vars            = hiera('icinga2::monitoring', { }),
-  $parent_zone          = undef,
+
+  String $type                  = 'client',
+  String $client_zone           = $::fqdn,
+  Hash $vars                    = hiera('icinga2::monitoring', { }),
+  Optional[String] $parent_zone = undef,
 
   Boolean $enable_email = false,
   Boolean $enable_sms   = false,
+
 ) {
+
   contain "::vision_icinga2::${type}"
+
 }
