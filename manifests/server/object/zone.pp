@@ -33,22 +33,24 @@ class vision_icinga2::server::object::zone (
     default => {}
   }
 
-  if is_string($parent_zone) {
-    ::icinga2::object::zone { $zone:
-      parent    => $parent_zone,
-      endpoints => {
-        $zone => {
-          host => $zone,
-        }
-      },
-    }
-  } else {
-    ::icinga2::object::zone { $zone:
-      endpoints => {
-        $zone => {
-          host => $zone,
-        }
-      },
+  if !defined(Icinga2::Object::Zone[$zone]) {
+    if is_string($parent_zone) {
+      ::icinga2::object::zone { $zone:
+        parent    => $parent_zone,
+        endpoints => {
+          $zone => {
+            host => $zone,
+          }
+        },
+      }
+    } else {
+      ::icinga2::object::zone { $zone:
+        endpoints => {
+          $zone => {
+            host => $zone,
+          }
+        },
+      }
     }
   }
 
@@ -69,13 +71,15 @@ class vision_icinga2::server::object::zone (
     $child_params = $child_node['parameters']
 
     if is_string($child_params['client_zone']) {
-      ::icinga2::object::zone { $child_params['client_zone']:
-        parent    => $zone,
-        endpoints => {
-          $child_params['client_zone'] => {
-            host => $child_params['client_zone'],
-          }
-        },
+      if !defined(Icinga2::Object::Zone[$child_params['client_zone']]) {
+        ::icinga2::object::zone { $child_params['client_zone']:
+          parent    => $zone,
+          endpoints => {
+            $child_params['client_zone'] => {
+              host => $child_params['client_zone'],
+            }
+          },
+        }
       }
     }
   }
