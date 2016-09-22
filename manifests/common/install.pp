@@ -42,9 +42,13 @@ class vision_icinga2::common::install (
     require => ::Apt::Source['debmon']
   }
 
-  package { $plugin_packages:
-    ensure  => present,
-    require => Exec['icinga2-apt-update']
+  $plugin_packages.each |pkg| {
+    if !defined(Package[$pkg]) {
+      package { $pkg:
+        ensure  => present,
+        require => Exec['icinga2-apt-update']
+      }
+    }
   }
 
   package { $mail_package:
