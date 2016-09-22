@@ -45,12 +45,14 @@ class vision_icinga2::common::object::host () {
       }
       $vars = merge($host_params['vars'], $overwrite_vars)
 
-      ::icinga2::object::host { $host['title']:
-        display_name     => $host_params['display_name'],
-        ipv4_address     => $host_params['ipv4_address'],
-        vars             => $vars,
-        target_file_name => $host_params['target_file_name'],
-        command_endpoint => $endpoint[0]['parameters']['parent_zone'],
+      if !defined(Icinga2::Object::Host[$host['title']]) {
+        ::icinga2::object::host { $host['title']:
+          display_name     => $host_params['display_name'],
+          ipv4_address     => $host_params['ipv4_address'],
+          vars             => $vars,
+          target_file_name => $host_params['target_file_name'],
+          command_endpoint => $endpoint[0]['parameters']['parent_zone'],
+        }
       }
     }
   }
