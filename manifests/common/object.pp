@@ -35,12 +35,16 @@ class vision_icinga2::common::object {
       'sms'   => $::vision_icinga2::enable_sms,
     }
   }
-  # Array of Hashes
-  $ress_vars = query_resources(false,
-    ['and',
-      ['=', 'type', 'Vision_Icinga2::Monitoring_parameters'],
-      ['=', 'certname', $::fqdn],
-    ])
+
+  # lint:ignore:variable_scope
+  $ress_vars = $::settings::storeconfigs ? {
+    true => query_resources(false,
+      ['and',
+        ['=', 'type', 'Vision_Icinga2::Monitoring_parameters'],
+        ['=', 'certname', $::fqdn],
+      ]),
+    default => {}
+  }
 
   # Merge gleichnamige parameter
   # =>
