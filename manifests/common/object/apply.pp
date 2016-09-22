@@ -119,12 +119,6 @@ class vision_icinga2::common::object::apply (
     assign_where     => '"linux-servers" in host.groups',
   }
 
-  ::icinga2::object::apply_service { 'smart':
-    check_command    => 'smart_status',
-    command_endpoint => 'host.vars.remote_client',
-    assign_where     => '"linux-servers" in host.groups',
-  }
-
   ::icinga2::object::apply_service { 'apt':
     check_command        => 'apt',
     command_endpoint     => 'host.vars.remote_client',
