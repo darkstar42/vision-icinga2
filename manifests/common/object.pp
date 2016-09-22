@@ -28,7 +28,6 @@ class vision_icinga2::common::object {
     'os'            => $::kernel,
     'vm'            => $::is_virtual,
     'distro'        => $::operatingsystem,
-    'parent'        => $::vision_icinga2::parent_zone,
     'remote_client' => $::fqdn,
     'notification'  => {
       'email' => $::vision_icinga2::enable_email,
@@ -66,7 +65,16 @@ class vision_icinga2::common::object {
   #   in der puppetdb gespeichert werden)
   #   - hiera (node/role/...)
   $exported_vars = deep_merge($local_vars, $merge)
-  $vars = deep_merge($exported_vars, $::vision_icinga2::vars)
+
+  if $::vision_icinga2::parent_zone {
+    $parent_vars = deep_merge($exported_vars, {
+      'parent' => $::vision_icinga2::parent_zone,
+    })
+  } else {
+    $parent_vars = $exported_vars
+  }
+
+  $vars = deep_merge($parent_vars, $::vision_icinga2::vars)
 
   ::icinga2::object::host { $::fqdn:
     target_file_name => "${::fqdn}.conf",
