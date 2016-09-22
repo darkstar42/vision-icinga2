@@ -45,7 +45,7 @@ class vision_icinga2::common::object::host () {
       }
       $vars = merge($host_params['vars'], $overwrite_vars)
 
-      if !defined(Icinga2::Object::Host[$host['title']]) {
+      if !defined(::Icinga2::Object::Host[$host['title']]) {
         ::icinga2::object::host { $host['title']:
           display_name     => $host_params['display_name'],
           ipv4_address     => $host_params['ipv4_address'],
