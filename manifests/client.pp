@@ -48,11 +48,11 @@ class vision_icinga2::client (
   }
 
   each ($child_nodes) |$child_node| {
-    ::icinga2::object::zone { $::child_node['certname']:
+    ::icinga2::object::zone { $child_node['certname']:
       parent    => $::fqdn,
       endpoints => {
-        $::child_node['certname'] => {
-          host => $::child_node['certname'],
+        $child_node['certname'] => {
+          host => $child_node['certname'],
         }
       },
     }
