@@ -42,7 +42,7 @@ class vision_icinga2::common::install (
     require => ::Apt::Source['debmon']
   }
 
-  $plugin_packages.each |pkg| {
+  $plugin_packages.each |$idx, $pkg| {
     if !defined(Package[$pkg]) {
       package { $pkg:
         ensure  => present,
