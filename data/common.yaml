@@ -8,4 +8,5 @@ vision_icinga2::server::notification_email: "%{hiera('vision::mail')}"
 vision_icinga2::server::notification_slack_bot_name: 'icinga2'
 vision_icinga2::server::notification_slack_webhook_url: "%{hiera('icinga2::slack::webhook_url')}"
 vision_icinga2::server::notification_slack_channel: 'monitoring'
-
+vision_icinga2::server::notification_users: {}
+vision_icinga2::server::notification_groups: {}
