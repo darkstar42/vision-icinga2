@@ -123,10 +123,11 @@ class vision_icinga2::common::object::apply (
     },
     assign_where  => 'host.vars.services.mysql',
   }
+
   ::icinga2::object::apply_service { 'disk':
     check_command    => 'disk',
-    #command_endpoint => 'host.vars.remote_client',
-    assign_where     => '"linux-servers" in host.groups',
+    command_endpoint => 'host.command_endpoint',
+    assign_where     => 'host.command_endpoint && "linux-servers" in host.groups',
   }
 
   ::icinga2::object::apply_service { 'exim':
