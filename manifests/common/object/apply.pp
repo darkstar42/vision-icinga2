@@ -125,51 +125,51 @@ class vision_icinga2::common::object::apply (
   }
   ::icinga2::object::apply_service { 'disk':
     check_command    => 'disk',
-    command_endpoint => 'host.vars.remote_client',
+    #command_endpoint => 'host.vars.remote_client',
     assign_where     => '"linux-servers" in host.groups',
   }
 
   ::icinga2::object::apply_service { 'exim':
     check_command    => 'vision-mailq',
-    command_endpoint => 'host.vars.remote_client',
+    #command_endpoint => 'host.vars.remote_client',
     assign_where     => '"linux-servers" in host.groups',
   }
 
   ::icinga2::object::apply_service { 'apt':
     check_command        => 'apt',
-    command_endpoint     => 'host.vars.remote_client',
+    #command_endpoint     => 'host.vars.remote_client',
     assign_where         => 'host.vars.distro == "Debian"',
     enable_notifications => false,
   }
 
   ::icinga2::object::apply_service { 'reboot_required':
     check_command        => 'reboot_required',
-    command_endpoint     => 'host.vars.remote_client',
+    #command_endpoint     => 'host.vars.remote_client',
     assign_where         => 'host.vars.distro == "Debian"',
     enable_notifications => false,
   }
 
   ::icinga2::object::apply_service { 'load':
     check_command    => 'load',
-    command_endpoint => 'host.vars.remote_client',
+    #command_endpoint => 'host.vars.remote_client',
     assign_where     => '"linux-servers" in host.groups',
   }
 
   ::icinga2::object::apply_service { 'procs':
     check_command    => 'procs',
-    command_endpoint => 'host.vars.remote_client',
+    #command_endpoint => 'host.vars.remote_client',
     assign_where     => '"linux-servers" in host.groups',
   }
 
   ::icinga2::object::apply_service { 'users':
     check_command    => 'users',
-    command_endpoint => 'host.vars.remote_client',
+    #command_endpoint => 'host.vars.remote_client',
     assign_where     => '"linux-servers" in host.groups',
   }
 
   ::icinga2::object::apply_service { 'icinga':
     check_command    => 'icinga',
-    command_endpoint => 'host.vars.remote_client',
+    #command_endpoint => 'host.vars.remote_client',
     assign_where     => 'host.vars.services.icinga_server',
   }
 }
