@@ -29,39 +29,21 @@ class vision_icinga2::common::object::apply (
 
   ::icinga2::object::apply_service { 'ping4':
     check_command    => 'ping4',
-    assign_where     => 'host.address',
+    command_endpoint => 'host.command_endpoint',
+    assign_where     => 'host.command_endpoint && host.address',
   }
 
   ::icinga2::object::apply_service { 'ping6':
     check_command    => 'ping6',
-    assign_where     => 'host.address6'
+    command_endpoint => 'host.command_endpoint',
+    assign_where     => 'host.command_endpoint && host.address6'
   }
 
   ::icinga2::object::apply_service { 'ssh':
     check_command    => 'ssh',
-    assign_where     => '(host.address || host.address6) && "linux-servers" in host.groups'
+    command_endpoint => 'host.command_endpoint',
+    assign_where     => 'host.command_endpoint && (host.address || host.address6) && "linux-servers" in host.groups'
   }
-
-  #::icinga2::object::apply_service { 'ping4':
-  #  check_command    => 'ping4',
-  #  command_endpoint => 'host.vars.parent',
-  #  assign_where     => '"linux-servers" in host.groups',
-  #  ignore_where     => 'host.address == ""',
-  #}
-
-  #::icinga2::object::apply_service { 'ping6':
-  #  check_command    => 'ping6',
-  #  command_endpoint => 'host.vars.parent',
-  #  assign_where     => '"linux-servers" in host.groups',
-  #  ignore_where     => 'host.address6 == ""',
-  #}
-
-  #::icinga2::object::apply_service { 'ssh':
-  #  check_command    => 'ssh',
-  #  command_endpoint => 'host.vars.parent',
-  #  assign_where     => 'host.address && "linux-servers" in host.groups',
-  #  ignore_where     => 'host.vars.remote_client == "localhost"',
-  #}
 
   #  Broken, see https://vision.fraunhofer.de/redmine/issues/273
   #  ::icinga2::object::apply_service { 'http-proc':
