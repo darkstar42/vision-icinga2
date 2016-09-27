@@ -22,7 +22,7 @@ class vision_icinga2::common::features (
 
   class { '::icinga2::feature::api':
     accept_commands => true,
-    accept_config   => true,
+    accept_config   => false,
     ca_path         => '/vision/pki/VisionCA.crt',
     cert_path       => "/vision/pki/${::fqdn}.crt",
     key_path        => "/vision/pki/${::fqdn}.key",
