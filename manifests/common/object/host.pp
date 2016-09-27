@@ -53,6 +53,13 @@ class vision_icinga2::common::object::host () {
           target_file_name => $host_params['target_file_name'],
           command_endpoint => $endpoint[0]['parameters']['parent_zone'],
         }
+
+        ::icinga2::object::apply_dependency { "parent-${host['title']}":
+          parent_host_name      => $host['title'],
+          assign_where          => 'host.address && host.vars.parent',
+          disable_notifications => true,
+          disable_checks        => true
+        }
       }
     }
   }
