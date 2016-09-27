@@ -14,6 +14,7 @@
 class vision_icinga2::common::object {
   contain ::vision_icinga2::common::object::apply
   contain ::vision_icinga2::common::object::checkcommand
+  contain ::vision_icinga2::common::object::dependency
   contain ::vision_icinga2::common::object::host
   contain ::vision_icinga2::common::object::hostgroup
   contain ::vision_icinga2::common::object::service
