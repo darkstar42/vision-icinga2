@@ -28,7 +28,6 @@ class vision_icinga2::common::object {
     'os'            => $::kernel,
     'vm'            => $::is_virtual,
     'distro'        => $::operatingsystem,
-    'remote_client' => $::fqdn,
     'notification'  => {
       'email' => $::vision_icinga2::enable_email,
       'sms'   => $::vision_icinga2::enable_sms,
