@@ -18,6 +18,15 @@ describe 'vision_icinga2' do
         }
       end
 
+      let :pre_condition do
+        [
+          'class vision_mysql::server::phpmyadmin::client(
+            String $server,
+            String $role,
+           ) {}',
+        ]
+      end
+
       let(:params) {{
                       :parent_zone => 'localhost.localhost',
                       :type => 'server',
