@@ -5,6 +5,13 @@ describe 'vision_icinga2_server' do
     it 'should idempotently run' do
 
       pp = <<-EOS
+
+       # MOCKING STUFF
+        class vision_mysql::server::phpmyadmin::client(
+            String $server,
+            String $role,
+        ) {}
+
         file { ['/vision','/vision/pki']:
             ensure => directory
         }->
@@ -20,15 +27,8 @@ describe 'vision_icinga2_server' do
             ensure  => link,
             target => '/tmp/dummyCA.pem',
        }->
-       class { 'vision_icinga2::server':
-          api_password                   => 'icinga2',
-          mysql_password                 => 'icinga2',
-          mysql_root_password            => 'icinga2',
-          notification_users             => {},
-          notification_groups            => {},
-          notification_email             => 'foo@bar.de',
-          notification_slack_webhook_url => 'barfoo.slack.com',
-          notification_slack_channel     => 'foobar',
+       class { 'vision_icinga2':
+          type                           => 'server',
         }
       EOS
 
@@ -37,11 +37,11 @@ describe 'vision_icinga2_server' do
 
     end
 
-    context 'check provisioned files' do
-      describe file('/etc/icinga2/scripts/slack-service-notification.sh') do
-        it { should contain 'SLACK_CHANNEL="#foobar"' }
-      end
-    end
+    # context 'check provisioned files' do
+    #   describe file('/etc/icinga2/scripts/slack-service-notification.sh') do
+    #     it { should contain 'SLACK_CHANNEL="#foobar"' }
+    #   end
+    # end
 
   end
 
