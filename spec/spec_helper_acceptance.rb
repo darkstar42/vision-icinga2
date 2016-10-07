@@ -17,6 +17,10 @@ RSpec.configure do |c|
   # Readable test descriptions
   c.formatter = :documentation
 
+  def copy_hiera_files_to(host, opts = {})
+    scp_to host, opts[:hiera_yaml], opts[:target] + '/hiera.yaml'
+  end
+
   # Configure all nodes in nodeset
   c.before :suite do
     # Install module and dependencies
@@ -28,6 +32,11 @@ RSpec.configure do |c|
     hosts.each do |host|
       on host, 'bash ' + '/etc/puppetlabs/code/modules/vision_icinga2/files/testing/gencrt.sh'
       puts 'Provisioned new set of dummy certificates'
+
+      copy_hiera_files_to(host, {
+                            :hiera_yaml => module_root + '/spec/hiera/hiera.yaml.beaker',
+                            :target     => '/etc/puppetlabs/code/modules/' + module_name + '/',
+                          })
 
       modules.each do |moduleName, moduleInfo|
         puts 'Fetch ' + moduleName + ' ' + moduleInfo['ref'] + ' from ' + moduleInfo['repo']
