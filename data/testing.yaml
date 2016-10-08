@@ -1,4 +1,6 @@
 ---
+vision_icinga2::common::object::fqdn: 'debian-8-x64'
+
 vision_icinga2::server::api_user: icinga2
 vision_icinga2::server::api_password: icinga2
 vision_icinga2::server::mysql_user: icinga2

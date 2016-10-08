@@ -8,10 +8,12 @@
 # --------
 #
 # @example
-# contain ::vision_icinga2
+# contain ::vision_icinga2::common:features
 #
 
 class vision_icinga2::common::features (
+
+  String $fqdn = $::fqdn,
 
 ) {
 
@@ -24,9 +26,10 @@ class vision_icinga2::common::features (
     accept_commands => true,
     accept_config   => false,
     ca_path         => '/vision/pki/VisionCA.crt',
-    cert_path       => "/vision/pki/${::fqdn}.crt",
-    key_path        => "/vision/pki/${::fqdn}.key",
+    cert_path       => "/vision/pki/${fqdn}.crt",
+    key_path        => "/vision/pki/${fqdn}.key",
     crl_path        => false,
     manage_zone     => false,
   }
+
 }

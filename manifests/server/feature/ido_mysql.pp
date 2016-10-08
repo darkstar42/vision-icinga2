@@ -1,5 +1,6 @@
 #
 class vision_icinga2::server::feature::ido_mysql (
+
   $host                 = $::icinga2::db_host,
   $port                 = $::icinga2::db_port,
   $user                 = $::icinga2::db_user,
@@ -27,6 +28,7 @@ class vision_icinga2::server::feature::ido_mysql (
     systemcommands_age             => 0,
   },
   $categories           = [],
+
 ) {
 
   file { '/tmp/icinga2-ido-mysql.preseed':
@@ -71,4 +73,5 @@ class vision_icinga2::server::feature::ido_mysql (
   ::icinga2::feature { 'ido-mysql':
     manage_file => false,
   }
+
 }

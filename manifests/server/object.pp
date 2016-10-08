@@ -8,10 +8,10 @@
 # --------
 #
 # @example
-# contain ::vision_icinga2
+# contain ::vision_icinga2::server::object
 #
 
-class vision_icinga2::server::object () {
+class vision_icinga2::server::object {
 
   contain ::vision_icinga2::server::object::api
   contain ::vision_icinga2::server::object::notification
@@ -19,4 +19,5 @@ class vision_icinga2::server::object () {
   contain ::vision_icinga2::server::object::user
   contain ::vision_icinga2::server::object::usergroup
   contain ::vision_icinga2::server::object::zone
+
 }

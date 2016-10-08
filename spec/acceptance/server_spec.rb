@@ -37,11 +37,12 @@ describe 'vision_icinga2_server' do
 
     end
 
-    # context 'check provisioned files' do
-    #   describe file('/etc/icinga2/scripts/slack-service-notification.sh') do
-    #     it { should contain 'SLACK_CHANNEL="#foobar"' }
-    #   end
-    # end
+    context 'check provisioned files' do
+      describe file('/etc/icinga2/scripts/slack-service-notification.sh') do
+        it { should contain 'SLACK_CHANNEL="#monitoring"' }
+        it { should contain 'SLACK_WEBHOOK_URL="foobar"' }
+      end
+    end
 
   end
 

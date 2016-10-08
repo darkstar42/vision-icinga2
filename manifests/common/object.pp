@@ -1,6 +1,8 @@
 # Class: vision_icinga2::common::object
 # ===========================
 #
+# For Server and Client
+#
 # Parameters
 # ----------
 #
@@ -8,10 +10,15 @@
 # --------
 #
 # @example
-# contain ::vision_icinga2
+# contain ::vision_icinga2::common::object
 #
 
-class vision_icinga2::common::object {
+class vision_icinga2::common::object (
+
+  String $fqdn = $::fqdn,
+
+){
+
   contain ::vision_icinga2::common::object::apply
   contain ::vision_icinga2::common::object::checkcommand
   contain ::vision_icinga2::common::object::dependency
@@ -40,7 +47,7 @@ class vision_icinga2::common::object {
     true => query_resources(false,
       ['and',
         ['=', 'type', 'Vision_Icinga2::Monitoring_parameters'],
-        ['=', 'certname', $::fqdn],
+        ['=', 'certname', $fqdn],
       ]),
     default => {}
   }
@@ -76,9 +83,9 @@ class vision_icinga2::common::object {
 
   $vars = deep_merge($parent_vars, $::vision_icinga2::vars)
 
-  ::icinga2::object::host { $::fqdn:
-    target_file_name => "${::fqdn}.conf",
-    display_name     => $::fqdn,
+  ::icinga2::object::host { $fqdn:
+    target_file_name => "${fqdn}.conf",
+    display_name     => $fqdn,
     ipv4_address     => $::ipaddress_eth0,
     vars             => $vars,
   }

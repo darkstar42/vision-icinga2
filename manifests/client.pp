@@ -8,11 +8,12 @@
 # --------
 #
 # @example
-# contain ::vision_icinga2
+# contain ::vision_icinga2::client
 #
-
+#
 class vision_icinga2::client (
 
+  String $fqdn = $::fqdn,
   Optional[String] $parent_zone = $::vision_icinga2::parent_zone,
 
 ) {
@@ -23,10 +24,10 @@ class vision_icinga2::client (
   contain ::vision_icinga2::common::features
   contain ::vision_icinga2::common::object
 
-  ::icinga2::object::zone { $::fqdn:
+  ::icinga2::object::zone { $fqdn:
     parent    => $parent_zone,
     endpoints => {
-      $::fqdn => {}
+      $fqdn => {}
     }
   }
 
@@ -43,13 +44,13 @@ class vision_icinga2::client (
               ['and',
                 ['=', 'type', 'Class'],
                 ['=', 'title', 'Vision_icinga2'],
-                ['=', ['parameter', 'parent_zone'], $::fqdn]]),
+                ['=', ['parameter', 'parent_zone'], $fqdn]]),
     default => {}
   }
 
   each ($child_nodes) |$child_node| {
     ::icinga2::object::zone { $child_node['certname']:
-      parent    => $::fqdn,
+      parent    => $fqdn,
       endpoints => {
         $child_node['certname'] => {
           host => $child_node['certname'],

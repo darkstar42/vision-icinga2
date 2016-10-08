@@ -8,10 +8,11 @@
 # --------
 #
 # @example
-# contain ::vision_icinga2
+# contain ::vision_icinga2::server
 #
 
 class vision_icinga2::server (
+
   String $api_user,
   String $api_password,
 
@@ -22,14 +23,17 @@ class vision_icinga2::server (
 
   String $notification_group,
   String $notification_email,
-  String $notification_slack_icinga_host = $::fqdn,
   String $notification_slack_webhook_url,
   String $notification_slack_channel,
   String $notification_slack_bot_name,
 
   Hash $notification_users,
   Hash $notification_groups,
+
+  String $notification_slack_icinga_host = $::fqdn,
+
 ) {
+
   contain ::vision_icinga2::common::install
   contain ::vision_icinga2::server::install
 
@@ -38,4 +42,5 @@ class vision_icinga2::server (
 
   contain ::vision_icinga2::common::object
   contain ::vision_icinga2::server::object
+
 }
