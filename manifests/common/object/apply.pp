@@ -136,6 +136,14 @@ class vision_icinga2::common::object::apply (
     check_command    => 'load',
     command_endpoint => 'host.vars.remote_client',
     assign_where     => 'host.vars.remote_client && "linux-servers" in host.groups',
+    vars             => {
+      load_wload1  => '$host.vars.services.load.wload1$',
+      load_wload5  => '$host.vars.services.load.wload5$',
+      load_wload15 => '$host.vars.services.load.wload15$',
+      load_cload1  => '$host.vars.services.load.cload1$',
+      load_cload5  => '$host.vars.services.load.cload5$',
+      load_cload15 => '$host.vars.services.load.cload15$',
+    },
   }
 
   ::icinga2::object::apply_service { 'procs':
