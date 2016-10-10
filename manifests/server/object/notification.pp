@@ -4,7 +4,7 @@ class vision_icinga2::server::object::notification () {
     assign_where => 'true == true',
     command      => 'mail-service-notification',
     user_groups  => [ $::vision_icinga2::server::notification_group ],
-    states       => [ 'OK', 'Warning', 'Critical', 'Unknown' ],
+    states       => [ 'OK', 'Warning', 'Critical' ],
     types        => [ 'Problem', 'Acknowledgement', 'Recovery', 'Custom' ],
     period       => '24x7',
   }
@@ -13,7 +13,7 @@ class vision_icinga2::server::object::notification () {
     assign_where => 'true == true',
     command      => 'slack-service-notification',
     users        => [ 'vision-it' ],
-    states       => [ 'OK', 'Warning', 'Critical', 'Unknown' ],
+    states       => [ 'OK', 'Warning', 'Critical' ],
     types        => [ 'Problem', 'Acknowledgement', 'Recovery', 'Custom' ],
     period       => '24x7',
   }
