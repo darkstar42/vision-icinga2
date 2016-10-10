@@ -155,4 +155,10 @@ class vision_icinga2::common::object::apply (
     command_endpoint => 'host.vars.remote_client',
     assign_where     => 'host.vars.remote_client && host.vars.services.icinga_server',
   }
+
+  ::icinga2::object::apply_service { 'puppet_agent':
+    check_command    => 'puppet_agent',
+    command_endpoint => 'host.vars.remote_client',
+    assign_where     => 'host.vars.remote_client && host.vars.distro == "Debian"',
+  }
 }
