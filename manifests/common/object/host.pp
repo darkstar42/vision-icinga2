@@ -61,13 +61,15 @@ class vision_icinga2::common::object::host () {
           disable_checks        => true
         }
 
-        ::icinga2::object::zone { $host['title']:
-          parent    => $endpoint[0]['parameters']['parent_zone'],
-          endpoints => {
-            $host['title'] => {
+        if (!defined(::Icinga2::Object::Zone[$host['title']])) {
+          ::icinga2::object::zone { $host['title']:
+                parent    => $endpoint[0]['parameters']['parent_zone'],
+                endpoints => {
+              $host['title'] => {
               host => $host['title'],
-            }
-          },
+              }
+            },
+          }
         }
       }
     }
