@@ -60,17 +60,6 @@ class vision_icinga2::common::object::host () {
           disable_notifications => true,
           disable_checks        => true
         }
-
-        if (!defined(::Icinga2::Object::Zone[$host['title']])) {
-          ::icinga2::object::zone { $host['title']:
-                parent    => $endpoint[0]['parameters']['parent_zone'],
-                endpoints => {
-              $host['title'] => {
-              host => $host['title'],
-              }
-            },
-          }
-        }
       }
     }
   }
