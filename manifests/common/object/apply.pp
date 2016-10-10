@@ -152,6 +152,10 @@ class vision_icinga2::common::object::apply (
     check_command    => 'users',
     command_endpoint => 'host.vars.remote_client',
     assign_where     => 'host.vars.remote_client && "linux-servers" in host.groups',
+    vars             => {
+      users_wgreater => '$host.vars.services.users.warning$',
+      users_cgreater => '$host.vars.services.users.critical$'
+    },
   }
 
   ::icinga2::object::apply_service { 'icinga':
