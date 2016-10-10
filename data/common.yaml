@@ -19,3 +19,9 @@ vision_icinga2::icingaweb2::icinga_mysql_password: "%{hiera('vision_icinga2::ser
 vision_icinga2::icingaweb2::ldap_port: 389
 vision_icinga2::icingaweb2::ldap_filter: ''
 vision_icinga2::icingaweb2::manage_apache_vhost: true
+
+lookup_options:
+  vision_icinga2::vars:
+    merge:
+      strategy: deep
+      merge_hash_arrays: true

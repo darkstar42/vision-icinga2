@@ -15,7 +15,7 @@ class vision_icinga2 (
 
   String $type                  = 'client',
   String $client_zone           = $::fqdn,
-  Hash $vars                    = hiera('icinga2::monitoring', { }),
+  Hash $vars                    = {},
   Optional[String] $parent_zone = undef,
 
   Boolean $enable_email = false,
