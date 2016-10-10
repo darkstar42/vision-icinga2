@@ -60,6 +60,15 @@ class vision_icinga2::common::object::host () {
           disable_notifications => true,
           disable_checks        => true
         }
+
+        ::icinga2::object::zone { $endpoint[0]['parameters']['parent_zone']:
+          parent    => $child_node['certname'],
+          endpoints => {
+            $endpoint[0]['parameters']['parent_zone'] => {
+              host => $endpoint[0]['parameters']['parent_zone'],
+            }
+          },
+        }
       }
     }
   }
