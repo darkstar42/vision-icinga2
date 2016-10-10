@@ -61,11 +61,11 @@ class vision_icinga2::common::object::host () {
           disable_checks        => true
         }
 
-        ::icinga2::object::zone { $endpoint[0]['parameters']['parent_zone']:
-          parent    => $child_node['certname'],
+        ::icinga2::object::zone { $host['title']:
+          parent    => $endpoint[0]['parameters']['parent_zone'],
           endpoints => {
-            $endpoint[0]['parameters']['parent_zone'] => {
-              host => $endpoint[0]['parameters']['parent_zone'],
+            $host['title'] => {
+              host => $host['title'],
             }
           },
         }
