@@ -80,6 +80,6 @@ class vision_icinga2::common::object::checkcommand (
 
   # monitor Puppet agent
   ::icinga2::object::checkcommand { 'puppet_agent':
-    command   => ['/usr/bin/sudo /usr/lib/nagios/plugins/check_puppet_agent'],
+    command   => ['/check_puppet_agent'],
   }
 }
