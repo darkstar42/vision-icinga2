@@ -20,7 +20,7 @@ class vision_icinga2::icingaweb2 (
 
   #contain ::vision_mysql::server
 
-  contain vision::profile::ldap::client
+  #contain vision::profile::ldap::client
 
   ::mysql::db { $mysql_database:
     user     => $mysql_user,
