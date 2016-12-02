@@ -1,42 +1,38 @@
----
 language: ruby
-
-# cache the bundle betweens builds
 cache: bundler
-
 matrix:
   fast_finish: true
   include:
-    - rvm: 2.1
-      env: PUPPET_VERSION="4.5" STRICT_VARIABLES="no"
-      services: docker
-      sudo: required
-      script: bundle exec rake
-    - rvm: 2.1
-      env: PUPPET_VERSION="4.5" STRICT_VARIABLES="yes"
-      services: docker
-      sudo: required
-      script: bundle exec rake spec
-    - rvm: 2.1
-      env: PUPPET_VERSION="4.3" STRICT_VARIABLES="yes"
-      services: docker
-      sudo: required
-      script: bundle exec rake beaker
-    - rvm: 2.2
-      env: PUPPET_VERSION="4.6.1" STRICT_VARIABLES="yes"
-      services: docker
-      sudo: required
-      script: bundle exec rake spec
-    - rvm: 2.2
-      env: PUPPET_VERSION="4.6.1" STRICT_VARIABLES="yes"
-      services: docker
-      sudo: required
-      script: bundle exec rake beaker
+  - rvm: 2.1
+    env: PUPPET_VERSION="4.5" STRICT_VARIABLES="no"
+    services: docker
+    sudo: required
+    script: bundle exec rake
+  - rvm: 2.1
+    env: PUPPET_VERSION="4.5" STRICT_VARIABLES="yes"
+    services: docker
+    sudo: required
+    script: bundle exec rake spec
+  - rvm: 2.1
+    env: PUPPET_VERSION="4.3" STRICT_VARIABLES="yes"
+    services: docker
+    sudo: required
+    script: bundle exec rake beaker
+  - rvm: 2.2
+    env: PUPPET_VERSION="4.6.1" STRICT_VARIABLES="yes"
+    services: docker
+    sudo: required
+    script: bundle exec rake spec
+  - rvm: 2.2
+    env: PUPPET_VERSION="4.6.1" STRICT_VARIABLES="yes"
+    services: docker
+    sudo: required
+    script: bundle exec rake beaker
 notifications:
   email:
     recipients:
-      - I+2kwgaNPMAzEu2LuJe9u+GIFp5x5JmvTjt7fDhfjMs7Us6+vV5kyQ0YEu+qgZTrVcsccdLkMH7FnXLK2SGnDUFdIBYhb/REIfK1Fs+HmH7Gez7ndqS+wfEJuA76eRY6Is8METF9Ty7I/AmNeg9rqWEgGFGFRYoTikXvsOh5TH86AwIynjaASeq+uYgdS3WWkKJwuZGspOB0o0kY2Ctxvm5IBl58suQ44Xd0TPj9OcsZ/CPbVNbL/Z3k1O+jC5kOXM3G/0dKkJyT5pTrtl89AsiKmKj2fv1mZGi2JxaToXCQSntnefyNcM9bei7sOpcm8XeVO4pe9GhJxxO3rHYTy75L+13Gt6MUHxEbFUcvAxgE4BfVL477BboVPHozacFxPUBO1BcAuRvWaIM+IS4Abys1RA9w0TgmNBx8UIXBqo7qJi5HEjz79OvonDejGTrA/MujVTQaEylygLqUX/NdIC7cFVWfDgZIydemoYBWWYtZLGzFysNQkkd5Jdh5/LA3scZMrisw4JIPmlx93LVOnqZVbgTkYQUxuvBd/o0x9qdwl/NZmuvJbEipgUZLt70afiYBd9wYHWt31nT8EHUhV2Exqrmd/ej54FmqBF3hgBo1bP6OwIzgxpbNzv8AcZPU5v+22P+4UNJlBVDiDzWj4c9Vfj4lLhyhg+BIC5xE05A=
+    - I+2kwgaNPMAzEu2LuJe9u+GIFp5x5JmvTjt7fDhfjMs7Us6+vV5kyQ0YEu+qgZTrVcsccdLkMH7FnXLK2SGnDUFdIBYhb/REIfK1Fs+HmH7Gez7ndqS+wfEJuA76eRY6Is8METF9Ty7I/AmNeg9rqWEgGFGFRYoTikXvsOh5TH86AwIynjaASeq+uYgdS3WWkKJwuZGspOB0o0kY2Ctxvm5IBl58suQ44Xd0TPj9OcsZ/CPbVNbL/Z3k1O+jC5kOXM3G/0dKkJyT5pTrtl89AsiKmKj2fv1mZGi2JxaToXCQSntnefyNcM9bei7sOpcm8XeVO4pe9GhJxxO3rHYTy75L+13Gt6MUHxEbFUcvAxgE4BfVL477BboVPHozacFxPUBO1BcAuRvWaIM+IS4Abys1RA9w0TgmNBx8UIXBqo7qJi5HEjz79OvonDejGTrA/MujVTQaEylygLqUX/NdIC7cFVWfDgZIydemoYBWWYtZLGzFysNQkkd5Jdh5/LA3scZMrisw4JIPmlx93LVOnqZVbgTkYQUxuvBd/o0x9qdwl/NZmuvJbEipgUZLt70afiYBd9wYHWt31nT8EHUhV2Exqrmd/ej54FmqBF3hgBo1bP6OwIzgxpbNzv8AcZPU5v+22P+4UNJlBVDiDzWj4c9Vfj4lLhyhg+BIC5xE05A=
     on_success: never
     on_failure: always
   slack:
-    secure: be8NGuUOtYwkeuAnAE7Fux7i5MckLra9bpfIAsHA5WsGBfUSYwBPHbbjWASCfZb7fP4hRlRgyfPF8ZI9wEgOgapOzWrX4wPJc162ppwDLnEISVGpbE4gVIapmZzdV5fwwYhHJf7eQva3Tt1cOkcxYL/43UMJu1kxOlLXOKzVNMmBv2Fi0dq2QJNTn8QqXQWdb4UhsEK2tC9b6Mlsg6kCijSZCgdOtGuS4704cLJGnaTrX7AVyz6mNu/Rj+bP3SIaVteK9OPlH0LtUZDMB+bEdzN8//5JiA/dfu1rDmbyyett75jEfLLmgnNlDFge8tfUwP/T3lML4LLgVNNRNFtztwowYCF4aOhU82vd5rcXLtCNDbBN4yW3eZ+HZ6Ja5XPRXZjRVkbf7BPYhCSnHMaxaQfL8fh2YFrP5EmZ8jey/+r8vI0UBQD6rjJgWUuG73UK1MuOJHEiOVOcJJTPzLX2fFSAqeHyP5Q71keLl2HAVqAiBk8gZxwoaThbD3m4t+DVV3EB10Kw8Ol3IRORwF/jReEsteiR/qigrXMFD0+2C3HRzM6MWNcnfywD0Jje5/DDY6MpxlW+llLIRJnEfN5p/g7gbOf6gLPDdAoDI9/dx0Ze29KdxO/hMAUWq4bOFBJ1OzYQFyRnTTZa50ywA7z8EPNp7w7dQwu1UznLXdeba3Y=
+    secure: Yl+XpsYJviUu3whPDHmQNpiOlhk/HfVZbknrsGIpKMeydgbIaj0CsFIog9bNvJLsKt8vtl5I/MWA9hEsvQ0lhyj3b7qz9rQnWwdR1Q+n9qw8rcdIHy8e+o0lhL3lF+q6Jg62hL6P8AhrrBJuKWRRgJjaO9UObB8c6gnu4/TJOdaZ6wBTmI1dAaGPo4Gd5UK/q26+wVtDyU8Ynznu9206t5rqfu2DJQFbOyidA20+eQmUU+00QoJjtkY7LPoTxY2wmZn4r+3P69zejxsd/WzVOmXo6OOP9lvxgdghfB2xdHeQZ7KaZ+0nlGron+3vJXsWivpylxoFuytiJrkgcgnS/kXCxZ42bFTAipzJL4ZFIxd8opn2jQG0YUj88uli6sKAT5t6HRf8ug3RPrBZlbxBPYNIV6iCX3IKUqnABFdTj6/eBnKSX90XEk4IL38fTJpGklhHhENc9ns6donF4pKWGkoiaXGqTlc617XPBLHXiI6DAoz2qQH36d/U0M0s9jz+bUySTbI1pQE62Z0odICwfLgkUMzqgMU7eRTwy5d83ubJrkGG2mfW1DyubnYcED8nzWzeTHZSx8/1uH08+VA6dSA1Xe7gJM094cScGvRljJtU+CUFoRxBqGjjCDlUACO+7J7M2gTnsSqk9f5Hr9dWWnwWICDe4C7H6+uAYlldzbE=
