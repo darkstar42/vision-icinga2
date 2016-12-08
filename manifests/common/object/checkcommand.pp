@@ -81,5 +81,13 @@ class vision_icinga2::common::object::checkcommand (
   # monitor Puppet agent
   ::icinga2::object::checkcommand { 'puppet_agent':
     command   => ['/check_puppet_agent'],
+    arguments => {
+      '"-w"' => {
+        value => '"86400"', # 24h * 60min * 60sec
+      },
+      '"-c"' => {
+        value => '"172800"', # 2 * 24h * 60min * 60sec
+      },
+    }
   }
 }
