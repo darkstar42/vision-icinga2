@@ -18,11 +18,9 @@ class vision_icinga2::common::object (
   String $fqdn = $::fqdn,
 
 ){
-
   contain ::vision_icinga2::common::object::apply
   contain ::vision_icinga2::common::object::checkcommand
   contain ::vision_icinga2::common::object::dependency
-  contain ::vision_icinga2::common::object::host
   contain ::vision_icinga2::common::object::hostgroup
   contain ::vision_icinga2::common::object::service
   contain ::vision_icinga2::common::object::servicegroup
@@ -83,11 +81,10 @@ class vision_icinga2::common::object (
 
   $vars = deep_merge($parent_vars, $::vision_icinga2::vars)
 
-  ::icinga2::object::host { $fqdn:
+  @@::icinga2::object::host { $fqdn:
     target_file_name => "${fqdn}.conf",
     display_name     => $fqdn,
     ipv4_address     => $::ipaddress_eth0,
     vars             => $vars,
   }
-
 }

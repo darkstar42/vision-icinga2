@@ -13,7 +13,7 @@
 
 class vision_icinga2::common::install {
 
-  contain ::vision_groups
+  #contain ::vision_groups
 
   $plugin_packages = [
     'nagios-plugins',

@@ -13,7 +13,9 @@
 
 class vision_icinga2::common::features (
 
-  String $fqdn = $::fqdn,
+  String $pki_ca_name,
+  String $pki_path,
+  String $fqdn      = $::fqdn,
 
 ) {
 
@@ -24,10 +26,10 @@ class vision_icinga2::common::features (
 
   class { '::icinga2::feature::api':
     accept_commands => true,
-    accept_config   => false,
-    ca_path         => '/vision/pki/VisionCA.crt',
-    cert_path       => "/vision/pki/${fqdn}.crt",
-    key_path        => "/vision/pki/${fqdn}.key",
+    accept_config   => true,
+    ca_path         => "${pki_path}/${pki_ca_name}.crt",
+    cert_path       => "${pki_path}/${fqdn}.crt",
+    key_path        => "${pki_path}/${fqdn}.key",
     crl_path        => false,
     manage_zone     => false,
   }

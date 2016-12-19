@@ -20,6 +20,9 @@ vision_icinga2::icingaweb2::ldap_port: 389
 vision_icinga2::icingaweb2::ldap_filter: ''
 vision_icinga2::icingaweb2::manage_apache_vhost: true
 
+vision_icinga2::common::features::pki_ca_name: 'VisionCA'
+vision_icinga2::common::features::pki_path: '/vision/pki'
+
 lookup_options:
   vision_icinga2::vars:
     merge:

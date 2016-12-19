@@ -14,9 +14,9 @@ class vision_icinga2::icingaweb2 (
   String $ldap_filter,
   String $admin_group,
   Boolean $manage_apache_vhost,
-  Hash $groups = hiera_hash('vision::groups'),
+  Hash $groups = hiera_hash('vision::groups', {}),
 ) {
-  contain ::vision_pki
+  #contain ::vision_pki
 
   #contain ::vision_mysql::server
 

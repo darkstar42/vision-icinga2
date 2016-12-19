@@ -52,11 +52,23 @@ class vision_icinga2::server::object::zone (
         },
       }
     }
+
+    file { "/etc/icinga2/zones.d/${zone}":
+      ensure => directory,
+      owner  => nagios,
+      group  => nagios,
+    }
   }
 
   # lint:ignore:variable_scope
   each ($parent_nodes) |$parent_node| {
     $parent_params = $parent_node['parameters']
+
+    file { "/etc/icinga2/zones.d/${parent_params['client_zone']}":
+      ensure => directory,
+      owner  => nagios,
+      group  => nagios,
+    }
 
     ::icinga2::object::zone { $parent_params['client_zone']:
       endpoints => {
@@ -79,6 +91,12 @@ class vision_icinga2::server::object::zone (
               host => $child_params['client_zone'],
             }
           },
+        }
+
+        file { "/etc/icinga2/zones.d/${child_params['client_zone']}":
+          ensure => directory,
+          owner  => nagios,
+          group  => nagios,
         }
       }
     }

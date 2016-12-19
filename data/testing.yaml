@@ -11,3 +11,6 @@ vision_icinga2::server::notification_slack_webhook_url: 'foobar'
 vision_icinga2::server::notification_email: 'foobar@example.org'
 vision_icinga2::server::notification_users: {}
 vision_icinga2::server::notification_groups: {}
+
+vision_icinga2::common::features::pki_ca_name: 'VisionCA'
+vision_icinga2::common::features::pki_path: '/vision/pki'
