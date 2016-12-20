@@ -24,11 +24,6 @@ describe 'vision_icinga2' do
             String $server,
             String $role,
            ) {}',
-          ' group {"monitor":}',
-          ' group {"icinga":}',
-          ' group {"ssl-cert":}',
-          ' group {"Debian-exim":}',
-          ' group {"storage":}',
         ]
       end
 

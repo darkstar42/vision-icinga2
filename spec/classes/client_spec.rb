@@ -12,11 +12,6 @@ describe 'vision_icinga2' do
 
       let :pre_condition do
         [
-          ' group {"monitor":}',
-          ' group {"icinga":}',
-          ' group {"ssl-cert":}',
-          ' group {"Debian-exim":}',
-          ' group {"storage":}',
         ]
       end
 
