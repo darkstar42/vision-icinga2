@@ -10,6 +10,16 @@ describe 'vision_icinga2' do
                     })
       end
 
+      let :pre_condition do
+        [
+          ' group {"monitor":}',
+          ' group {"icinga":}',
+          ' group {"ssl-cert":}',
+          ' group {"Debian-exim":}',
+          ' group {"storage":}',
+        ]
+      end
+
       before(:each) do
         Puppet::Parser::Functions.newfunction(:query_resources,
                                               :type => :rvalue) { |args|

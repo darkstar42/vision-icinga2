@@ -74,14 +74,13 @@ class vision_icinga2::server::object::host () {
           }
         }
 
-        /*
-        ::icinga2::object::apply_dependency { "parent-${host['title']}":
-          parent_host_name      => $host['title'],
-          assign_where          => "host.address && host.vars.parent && host.vars.parent == \"${host['title']}\"",
-          disable_notifications => true,
-          disable_checks        => true
-        }
-        */
+        # ::icinga2::object::apply_dependency { "parent-${host['title']}":
+        #   parent_host_name      => $host['title'],
+        #   assign_where          => "host.address && host.vars.parent && host.vars.parent == \"${host['title']}\"",
+        #   disable_notifications => true,
+        #   disable_checks        => true
+        # }
+
       }
     }
   }
