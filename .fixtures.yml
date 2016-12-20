@@ -4,18 +4,24 @@ fixtures:
     apt:
       ref: "2.2.2"
       repo: "https://github.com/puppetlabs/puppetlabs-apt"
-    stdlib:
-      ref: "4.12.0"
-      repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
+    concat:
+      ref: "2.2.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-concat.git"
     icinga2:
-      ref: "556db546d6137b077be36141f8c463b6990aaef5"
-      repo: "https://github.com/Icinga/puppet-icinga2"
-    vision_monitoring:
-      ref: "origin/production"
-      repo: "https://github.com/vision-it/vision-monitoring"
+      ref: "3ae43fbd483febd62e0bf510bf50d0f51c9575c2"
+      repo: "https://github.com/Icinga/puppet-icinga2-rewrite"
+    mysql:
+      ref: "3.8.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-mysql"
     puppetdbquery:
       ref: "2.1.1"
       repo: "https://github.com/dalen/puppet-puppetdbquery"
+    stdlib:
+      ref: "4.12.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
+    vision_monitoring:
+      ref: "origin/production"
+      repo: "https://github.com/vision-it/vision-monitoring"
     vision_puppet:
       ref: "origin/production"
       repo: "https://github.com/vision-it/vision-puppet"
@@ -25,8 +31,5 @@ fixtures:
     vision_mysql:
       ref: "origin/production"
       repo: "https://github.com/vision-it/vision-mysql"
-    mysql:
-      ref: "3.8.0"
-      repo: "https://github.com/puppetlabs/puppetlabs-mysql"
   symlinks:
     vision_icinga2: '#{source_dir}'
