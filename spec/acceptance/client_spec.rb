@@ -52,11 +52,11 @@ describe 'vision_icinga2_client' do
   end
 
   context 'config provisioned' do
-    describe file('/etc/icinga2/objects/hosts/debian-8-x64.conf') do
-      it { should be_file }
-      its(:content) { should match '"parent" = "foobar.de"' }
-      its(:content) { should match 'Host "debian-8-x64"' }
-    end
+    # describe file('/etc/icinga2/objects/hosts/debian-8-x64.conf') do
+    #   it { should be_file }
+    #   its(:content) { should match '"parent" = "foobar.de"' }
+    #   its(:content) { should match 'Host "debian-8-x64"' }
+    # end
 
     describe file('/etc/icinga2/features-available/api.conf') do
       it { should be_file }
