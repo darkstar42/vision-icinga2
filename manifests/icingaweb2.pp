@@ -90,6 +90,7 @@ class vision_icinga2::icingaweb2 (
     require => Mysql::Db[$mysql_database],
   }
 
+  # https://github.com/Icinga/icingaweb2/blob/master/doc/05-Authentication.md#-database-setup
   $admin_password_hash = generate ('/usr/bin/openssl', 'passwd', '-1', $admin_password)
 
   exec { 'create web user':
