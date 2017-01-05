@@ -15,7 +15,7 @@ vision_icinga2::icingaweb2::mysql_user: 'icingaweb2'
 vision_icinga2::icingaweb2::icinga_mysql_database: "%{hiera('vision_icinga2::server::mysql_database')}"
 vision_icinga2::icingaweb2::icinga_mysql_user: "%{hiera('vision_icinga2::server::mysql_user')}"
 vision_icinga2::icingaweb2::icinga_mysql_password: "%{hiera('vision_icinga2::server::mysql_password')}"
-
+vision_icinga2::icingaweb2::admin_name: 'icingaadmin'
 vision_icinga2::icingaweb2::ldap_port: 389
 vision_icinga2::icingaweb2::ldap_filter: ''
 vision_icinga2::icingaweb2::manage_apache_vhost: true

@@ -15,6 +15,8 @@ class vision_icinga2::icingaweb2 (
   String $admin_group,
   Boolean $manage_apache_vhost,
   Hash $groups = hiera_hash('vision::groups', {}),
+  String $admin_name,
+  String $admin_password,
 ) {
   #contain ::vision_pki
 
@@ -88,9 +90,10 @@ class vision_icinga2::icingaweb2 (
     require => Mysql::Db[$mysql_database],
   }
 
-  # icingaadmin : icingaadmin
+  $admin_password_hash = generate ('/usr/bin/openssl', 'passwd', '-1', $admin_password)
+
   exec { 'create web user':
-    command     => "/usr/bin/mysql --defaults-file='/root/.my.cnf' ${mysql_database} -e \" INSERT INTO icingaweb_user (name, active, password_hash) VALUES ('icingaadmin', 1, '\\\$1\\\$2NObEY5e\\\$TVsdtWZi6LW9aaTJyzhd71');\"",
+    command     => "/usr/bin/mysql --defaults-file='/root/.my.cnf' ${mysql_database} -e \" INSERT INTO icingaweb_user (name, active, password_hash) VALUES ('${admin_name}', 1, '${admin_password_hash}');\"",
     refreshonly => true,
   }
 }
