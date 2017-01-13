@@ -3,23 +3,33 @@
 class vision_icinga2::common::object::servicegroup {
   ::icinga2::object::servicegroup { 'ping':
     display_name => 'Ping checks',
-    assign_where => 'match("ping*", service.check_command)',
+    assign       => [
+      'match(ping*, service.check_command)',
+    ],
+    target       => "${::icinga2::params::conf_dir}/conf.d/servicegroups.conf"
   }
 
   ::icinga2::object::servicegroup { 'http':
     display_name => 'HTTP checks',
-    assign_where => 'match("http_*", service.check_command)',
+    assign       => [
+      'match(http_*, service.check_command)',
+    ],
+    target       => "${::icinga2::params::conf_dir}/conf.d/servicegroups.conf"
   }
 
   ::icinga2::object::servicegroup { 'disk':
     display_name => 'Disk checks',
-    assign_where => 'service.check_command == "disk"',
+    assign       => [
+      'service.check_command == disk',
+    ],
+    target       => "${::icinga2::params::conf_dir}/conf.d/servicegroups.conf"
   }
 
   ::icinga2::object::servicegroup { 'mysql':
-    # not sure why we would ref. the target dir here
-    #
-    # target_dir   => $::target_dir,
-    assign_where => 'match("mysql_*", service.check_command)',
+    display_name => 'MySQL checks',
+    assign       => [
+      'match(mysql_*, service.check_command)',
+    ],
+    target       => "${::icinga2::params::conf_dir}/conf.d/servicegroups.conf"
   }
 }

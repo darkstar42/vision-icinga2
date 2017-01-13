@@ -4,12 +4,13 @@ class vision_icinga2::server::object::user (
   Hash $users  = $::vision_icinga2::server::notification_users,
 ) {
   ::icinga2::object::user { 'vision-it':
-    templates    => ['generic-user'],
+    import       => ['generic-user'],
     display_name => 'Vision IT',
     email        => $::vision_icinga2::server::notification_email,
     groups       => [
       $::vision_icinga2::server::notification_group
     ],
+    target       => "${::icinga2::params::conf_dir}/conf.d/users.conf"
   }
 
   $member = {}
@@ -28,13 +29,14 @@ class vision_icinga2::server::object::user (
           $user['mail'].each |$email| {
               if ! ('iis.fraunhofer.de' in $email) {
                 ::icinga2::object::user { $member:
-                  templates    => ['generic-user'],
+                  import       => ['generic-user'],
                   display_name => $user['commonName'],
                   pager        => $user['mobile'],
                   email        => $email,
                   groups       => [
                     $::vision_icinga2::server::notification_group
                   ],
+                  target       => "${::icinga2::params::conf_dir}/conf.d/users.conf"
                 }
               }
             }

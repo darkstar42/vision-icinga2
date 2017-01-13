@@ -1,4 +1,14 @@
 ---
+vision_icinga2::type: 'client'
+vision_icinga2::zone: "%{facts.fqdn}"
+vision_icinga2::address: "%{facts.ipaddress}"
+vision_icinga2::api_host: "%{facts.ipaddress}"
+vision_icinga2::api_port: 5665
+vision_icinga2::vars: {}
+vision_icinga2::parent_zone: ~
+vision_icinga2::enable_email: false
+vision_icinga2::enable_sms: false
+
 vision_icinga2::server::api_user: 'icinga2'
 vision_icinga2::server::api_password: "%{hiera('icinga2::api::password')}"
 vision_icinga2::server::mysql_user: 'icinga2'

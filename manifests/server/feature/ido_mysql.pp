@@ -27,34 +27,27 @@ class vision_icinga2::server::feature::ido_mysql (
     servicechecks_age              => 0,
     systemcommands_age             => 0,
   },
-  $categories           = [],
+  $categories           = undef,
 
 ) {
 
-  file { '/tmp/icinga2-ido-mysql.preseed':
-    ensure  => present,
-    content => file('vision_icinga2/server/feature/ido_mysql.preseed'),
-    mode    => '0600',
-    backup  => false,
+  ::mysql::db { $database:
+    user     => $user,
+    password => $password,
+    host     => '%',
+    grant    => [
+      'SELECT',
+      'UPDATE',
+      'CREATE',
+      'INSERT',
+      'INDEX',
+      'ALTER',
+      'DELETE',
+      'DROP',
+    ],
   }
 
-  package { 'icinga2-ido-mysql':
-    ensure       => $::icinga2::package_ensure,
-    require      => File['/tmp/icinga2-ido-mysql.preseed'],
-    responsefile => '/tmp/icinga2-ido-mysql.preseed',
-  }
-
-  Package['icinga2-ido-mysql'] ->
-  exec { 'mysql_schema_load':
-    user    => 'root',
-    path    => $::path,
-    command => "mysql -h '${host}' -u '${user}' -p'${password}' '${database}' \
-    < '/usr/share/icinga2-ido-mysql/schema/mysql.sql' && touch /etc/icinga2/mysql_schema_loaded.txt",
-    creates => '/etc/icinga2/mysql_schema_loaded.txt',
-    require => Mysql::Db[$database],
-  }
-
-  ::icinga2::object::idomysqlconnection { 'ido-mysql':
+  class { '::icinga2::feature::idomysql':
     host                 => $host,
     port                 => $port,
     user                 => $user,
@@ -66,12 +59,7 @@ class vision_icinga2::server::feature::ido_mysql (
     enable_ha            => $enable_ha,
     cleanup              => $cleanup,
     categories           => $categories,
-    target_file_name     => 'ido-mysql.conf',
-    target_dir           => '/etc/icinga2/features-available',
-  } ->
-
-  ::icinga2::feature { 'ido-mysql':
-    manage_file => false,
+    import_schema        => true,
+    require              => Mysql::Db[$database]
   }
-
 }

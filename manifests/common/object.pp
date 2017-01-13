@@ -18,13 +18,11 @@ class vision_icinga2::common::object (
   String $fqdn = $::fqdn,
 
 ){
-  contain ::vision_icinga2::common::object::apply
   contain ::vision_icinga2::common::object::checkcommand
-  contain ::vision_icinga2::common::object::dependency
-  contain ::vision_icinga2::common::object::hostgroup
-  contain ::vision_icinga2::common::object::service
-  contain ::vision_icinga2::common::object::servicegroup
+  contain ::vision_icinga2::common::object::apply
   contain ::vision_icinga2::common::object::template
+  contain ::vision_icinga2::common::object::hostgroup
+  contain ::vision_icinga2::common::object::servicegroup
   contain ::vision_icinga2::common::object::timeperiod
 
   contain ::vision_monitoring
@@ -81,10 +79,22 @@ class vision_icinga2::common::object (
 
   $vars = deep_merge($parent_vars, $::vision_icinga2::vars)
 
-  @@::icinga2::object::host { $fqdn:
-    target_file_name => "${fqdn}.conf",
+  ::vision_icinga2::common::object::host { $fqdn:
+    target => "/etc/icinga2/conf.d/${fqdn}.conf",
     display_name     => $fqdn,
-    ipv4_address     => $::ipaddress_eth0,
+    address          => $::vision_icinga2::address,
     vars             => $vars,
+  }
+
+  ::icinga2::object::zone { 'global-templates':
+    global => true,
+  }
+
+  file { "${::icinga2::params::conf_dir}/zones.d/global-templates":
+    ensure  => directory,
+    owner   => nagios,
+    group   => nagios,
+    recurse => true,
+    purge   => true,
   }
 }

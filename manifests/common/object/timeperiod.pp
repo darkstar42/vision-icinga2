@@ -4,7 +4,7 @@
 
 class vision_icinga2::common::object::timeperiod {
   ::icinga2::object::timeperiod { '24x7':
-    timeperiod_display_name => 'Icinga 2 24x7 TimePeriod',
+    display_name            => '24x7 TimePeriod',
     ranges                  => {
       monday    => '00:00-24:00',
       tuesday   => '00:00-24:00',
@@ -14,10 +14,11 @@ class vision_icinga2::common::object::timeperiod {
       saturday  => '00:00-24:00',
       sunday    => '00:00-24:00',
     },
+    target                  => "${::icinga2::params::conf_dir}/conf.d/timeperiods.conf"
   }
 
   ::icinga2::object::timeperiod { '9to5':
-    timeperiod_display_name => 'Icinga 2 9to5 TimePeriod',
+    display_name            => '9to5 TimePeriod',
     ranges                  => {
       monday    => '09:00-17:00',
       tuesday   => '09:00-17:00',
@@ -27,11 +28,13 @@ class vision_icinga2::common::object::timeperiod {
       saturday  => '09:00-17:00',
       sunday    => '09:00-17:00',
     },
+    target                  => "${::icinga2::params::conf_dir}/conf.d/timeperiods.conf"
   }
 
   ::icinga2::object::timeperiod { 'never':
-    timeperiod_display_name => 'Icinga 2 never TimePeriod',
+    display_name            => 'never TimePeriod',
     ranges                  => {
     },
+    target                  => "${::icinga2::params::conf_dir}/conf.d/timeperiods.conf"
   }
 }

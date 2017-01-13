@@ -19,7 +19,10 @@ class vision_icinga2::server::object {
   contain ::vision_icinga2::server::object::usergroup
   contain ::vision_icinga2::server::object::zone
 
-  #contain ::vision_icinga2::server::object::notification
-  #contain ::vision_icinga2::server::object::notificationcommand
+  contain ::vision_icinga2::server::object::dependency
+  contain ::vision_icinga2::server::object::service
+
+  contain ::vision_icinga2::server::object::notification
+  contain ::vision_icinga2::server::object::notificationcommand
 
 }

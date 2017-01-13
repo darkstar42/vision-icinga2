@@ -19,7 +19,6 @@ class vision_icinga2::server (
   String $mysql_user,
   String $mysql_password,
   String $mysql_database,
-  String $mysql_root_password,
 
   String $notification_group,
   String $notification_email,
