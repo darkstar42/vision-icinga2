@@ -11,6 +11,7 @@ vision_icinga2::enable_sms: false
 
 vision_icinga2::server::api_user: 'icinga2'
 vision_icinga2::server::api_password: "%{hiera('icinga2::api::password')}"
+vision_icinga2::server::manage_mysql: true
 vision_icinga2::server::mysql_user: 'icinga2'
 vision_icinga2::server::mysql_database: 'icinga2'
 vision_icinga2::server::notification_group: 'vision-sysadmin'
@@ -28,7 +29,7 @@ vision_icinga2::icingaweb2::icinga_mysql_password: "%{hiera('vision_icinga2::ser
 
 vision_icinga2::icingaweb2::ldap_port: 389
 vision_icinga2::icingaweb2::ldap_filter: ''
-vision_icinga2::icingaweb2::manage_apache_vhost: true
+vision_icinga2::icingaweb2::manage_apache_vhost: false
 
 vision_icinga2::common::features::pki_ca_name: 'VisionCA'
 vision_icinga2::common::features::pki_path: '/vision/pki'

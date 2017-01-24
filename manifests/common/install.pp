@@ -11,9 +11,11 @@
 # contain ::vision_icinga2::common::install
 #
 
-class vision_icinga2::common::install {
+class vision_icinga2::common::install (
+  String $groups_class = '::vision_groups',
+) {
 
-  contain ::vision_groups
+  contain $groups_class
 
   $plugin_packages = [
     'nagios-plugins',
@@ -66,6 +68,15 @@ class vision_icinga2::common::install {
   }
 
   file { "${::icinga2::params::conf_dir}/zones.d":
+    ensure  => directory,
+    owner   => nagios,
+    group   => nagios,
+    recurse => true,
+    purge   => true,
+    require => File[$::icinga2::params::conf_dir],
+  }
+
+  file { "${::icinga2::params::conf_dir}/conf.d":
     ensure  => directory,
     owner   => nagios,
     group   => nagios,

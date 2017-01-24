@@ -8,8 +8,8 @@ fixtures:
       ref: "2.2.0"
       repo: "https://github.com/puppetlabs/puppetlabs-concat.git"
     icinga2:
-      ref: "3ae43fbd483febd62e0bf510bf50d0f51c9575c2"
-      repo: "https://github.com/Icinga/puppet-icinga2-rewrite"
+      ref: "v1.0.2"
+      repo: "https://github.com/Icinga/puppet-icinga2.git"
     mysql:
       ref: "3.8.0"
       repo: "https://github.com/puppetlabs/puppetlabs-mysql"

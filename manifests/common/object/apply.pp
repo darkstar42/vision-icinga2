@@ -57,7 +57,7 @@ class vision_icinga2::common::object::apply {
     vars             => {
       http_vhost   => '$host.address$',
       http_address => '$host.address$',
-      http_uri     => 'function () { return config.http_uri }',
+      #http_uri     => 'function () { return config.http_uri }',
     },
     target           => "${::icinga2::params::conf_dir}/conf.d/applies.conf",
     /*
