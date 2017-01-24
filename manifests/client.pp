@@ -77,14 +77,16 @@ class vision_icinga2::client (
   each ($child_nodes) |$child_node| {
     $child_params = $child_node['parameters']
 
-    ::icinga2::object::zone { $child_node['certname']:
-      parent    => $zone,
-      endpoints => [ $child_node['certname'] ]
-    }
+    if (!defined(::Icinga2::Object::Zone[$child_node['certname']])) {
+      ::icinga2::object::zone { $child_node['certname']:
+        parent    => $zone,
+        endpoints => [ $child_node['certname'] ]
+      }
 
-    ::icinga2::object::endpoint { $child_node['certname']:
-      host => $child_params['api_host'],
-      port => $child_params['api_port'],
+      ::icinga2::object::endpoint { $child_node['certname']:
+        host => $child_params['api_host'],
+        port => $child_params['api_port'],
+      }
     }
   }
 }

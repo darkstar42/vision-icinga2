@@ -137,6 +137,7 @@ class vision_icinga2::common::object::apply {
     target           => "${::icinga2::params::conf_dir}/conf.d/applies.conf",
   }
 
+  /*
   ::icinga2::object::service { 'exim':
     apply            => true,
     import           => [ 'generic-service' ],
@@ -147,6 +148,7 @@ class vision_icinga2::common::object::apply {
     ],
     target           => "${::icinga2::params::conf_dir}/conf.d/applies.conf",
   }
+  */
 
   ::icinga2::object::service { 'apt':
     apply                => true,
@@ -221,6 +223,7 @@ class vision_icinga2::common::object::apply {
     target           => "${::icinga2::params::conf_dir}/conf.d/applies.conf",
   }
 
+  /*
   ::icinga2::object::service { 'puppet_agent':
     apply            => true,
     import           => [ 'generic-service' ],
@@ -231,4 +234,5 @@ class vision_icinga2::common::object::apply {
     ],
     target           => "${::icinga2::params::conf_dir}/conf.d/applies.conf",
   }
+  */
 }
