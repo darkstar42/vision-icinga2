@@ -30,6 +30,8 @@ vision_icinga2::icingaweb2::icinga_mysql_password: "%{hiera('vision_icinga2::ser
 vision_icinga2::icingaweb2::ldap_port: 389
 vision_icinga2::icingaweb2::ldap_filter: ''
 vision_icinga2::icingaweb2::manage_apache_vhost: false
+vision_icinga2::icingaweb2::web_root: '/usr/share/icingaweb2'
+vision_icinga2::icingaweb2::config_dir: '/etc/icingaweb2'
 
 vision_icinga2::common::features::pki_ca_name: 'VisionCA'
 vision_icinga2::common::features::pki_path: '/vision/pki'

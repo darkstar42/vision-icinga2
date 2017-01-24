@@ -1,7 +1,7 @@
 # = Class: vision_icinga2::common::object::host
 define vision_icinga2::common::object::host (
   $ensure                = present,
-  $hostname              = $title,
+  $host_name             = $title,
   $address               = undef,
   $address6              = undef,
   $vars                  = undef,

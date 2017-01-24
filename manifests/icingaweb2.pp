@@ -13,6 +13,8 @@ class vision_icinga2::icingaweb2 (
   String $ldap_base,
   String $ldap_filter,
   String $admin_group,
+  String $web_root,
+  String $config_dir,
   Boolean $manage_apache_vhost,
   Hash $groups = hiera_hash('vision::groups', {}),
 ) {
@@ -92,5 +94,9 @@ class vision_icinga2::icingaweb2 (
   exec { 'create web user':
     command     => "/usr/bin/mysql --defaults-file='/root/.my.cnf' ${mysql_database} -e \" INSERT INTO icingaweb_user (name, active, password_hash) VALUES ('icingaadmin', 1, '\\\$1\\\$2NObEY5e\\\$TVsdtWZi6LW9aaTJyzhd71');\"",
     refreshonly => true,
+  }
+
+  ::apache::custom_config { 'icingaweb2':
+    content => template('vision_icinga2/apache2.conf.erb'),
   }
 }
