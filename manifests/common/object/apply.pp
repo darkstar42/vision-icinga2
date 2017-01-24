@@ -54,17 +54,8 @@ class vision_icinga2::common::object::apply {
     apply            => 'identifier => config in host.vars.services.http',
     display_name     => 'http',
     check_command    => 'http',
-    vars             => {
-      http_vhost   => '$host.address$',
-      http_address => '$host.address$',
-      #http_uri     => 'function () { return config.http_uri }',
-    },
+    vars             => 'vars + config',
     target           => "${::icinga2::params::conf_dir}/conf.d/applies.conf",
-    /*
-    custom_append => [
-      'vars += config',
-    ],
-    */
   }
 
   ::icinga2::object::service { 'gitlab_status':
@@ -88,11 +79,7 @@ class vision_icinga2::common::object::apply {
     assign        => [
       'host.vars.disks',
     ],
-    /*
-    custom_append => [
-      'vars += { disk = "/dev/" + identifier }',
-    ],
-    */
+    vars          => 'vars + disk',
     target        => "${::icinga2::params::conf_dir}/conf.d/applies.conf",
   }
 
@@ -104,11 +91,7 @@ class vision_icinga2::common::object::apply {
     import        => [ 'generic-service', 'onceaday-service' ],
     display_name  => 'Backupage',
     check_command => 'vision-backupage',
-    /*
-    custom_append => [
-      'vars += backup',
-    ],
-    */
+    vars          => 'vars + backup',
     target        => "${::icinga2::params::conf_dir}/conf.d/applies.conf",
   }
   ::icinga2::object::service { 'mysql':
